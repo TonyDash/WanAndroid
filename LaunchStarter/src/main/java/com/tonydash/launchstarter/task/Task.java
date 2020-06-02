@@ -3,8 +3,8 @@ package com.tonydash.launchstarter.task;
 import android.content.Context;
 import android.os.Process;
 
-import com.fmt.launch.starter.TaskDispatcher;
-import com.fmt.launch.starter.utils.DispatcherExecutor;
+import com.tonydash.launchstarter.TaskDispatcher;
+import com.tonydash.launchstarter.utils.DispatcherExecutor;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;

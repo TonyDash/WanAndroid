@@ -5,9 +5,9 @@ import android.os.Process;
 
 import androidx.core.os.TraceCompat;
 
-import com.fmt.launch.starter.TaskDispatcher;
-import com.fmt.launch.starter.stat.TaskStat;
-import com.fmt.launch.starter.utils.DispatcherLog;
+import com.tonydash.launchstarter.TaskDispatcher;
+import com.tonydash.launchstarter.stat.TaskStat;
+import com.tonydash.launchstarter.utils.DispatcherLog;
 
 
 /**
@@ -21,7 +21,7 @@ public class DispatchRunnable implements Runnable {
     public DispatchRunnable(Task task) {
         this.mTask = task;
     }
-    public DispatchRunnable(Task task,TaskDispatcher dispatcher) {
+    public DispatchRunnable(Task task, TaskDispatcher dispatcher) {
         this.mTask = task;
         this.mTaskDispatcher = dispatcher;
     }

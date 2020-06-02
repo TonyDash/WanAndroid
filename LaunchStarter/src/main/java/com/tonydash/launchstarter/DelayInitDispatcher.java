@@ -3,8 +3,9 @@ package com.tonydash.launchstarter;
 import android.os.Looper;
 import android.os.MessageQueue;
 
-import com.fmt.launch.starter.task.DispatchRunnable;
-import com.fmt.launch.starter.task.Task;
+
+import com.tonydash.launchstarter.task.DispatchRunnable;
+import com.tonydash.launchstarter.task.Task;
 
 import java.util.LinkedList;
 import java.util.Queue;

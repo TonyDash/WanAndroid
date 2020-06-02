@@ -6,13 +6,13 @@ import android.util.Log;
 
 import androidx.annotation.UiThread;
 
-import com.fmt.launch.starter.sort.TaskSortUtil;
-import com.fmt.launch.starter.stat.TaskStat;
-import com.fmt.launch.starter.task.DispatchRunnable;
-import com.fmt.launch.starter.task.Task;
-import com.fmt.launch.starter.task.TaskCallBack;
-import com.fmt.launch.starter.utils.DispatcherLog;
-import com.fmt.launch.starter.utils.Utils;
+import com.tonydash.launchstarter.sort.TaskSortUtil;
+import com.tonydash.launchstarter.stat.TaskStat;
+import com.tonydash.launchstarter.task.DispatchRunnable;
+import com.tonydash.launchstarter.task.Task;
+import com.tonydash.launchstarter.task.TaskCallBack;
+import com.tonydash.launchstarter.utils.DispatcherLog;
+import com.tonydash.launchstarter.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

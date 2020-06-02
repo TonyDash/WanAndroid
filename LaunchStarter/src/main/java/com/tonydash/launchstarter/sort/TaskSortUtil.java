@@ -4,8 +4,8 @@ package com.tonydash.launchstarter.sort;
 import androidx.annotation.NonNull;
 import androidx.collection.ArraySet;
 
-import com.fmt.launch.starter.task.Task;
-import com.fmt.launch.starter.utils.DispatcherLog;
+import com.tonydash.launchstarter.task.Task;
+import com.tonydash.launchstarter.utils.DispatcherLog;
 
 import java.util.ArrayList;
 import java.util.List;
