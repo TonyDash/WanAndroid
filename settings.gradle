@@ -1,3 +1,6 @@
+include ':networkLibrary'
+include ':commonlibrary'
+include ':baselibrary'
 rootProject.name='WanAndroid'
 include ':app'
 include ':LaunchStarter'
