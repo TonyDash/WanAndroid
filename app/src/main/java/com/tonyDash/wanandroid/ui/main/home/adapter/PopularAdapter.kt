@@ -6,6 +6,10 @@ import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.databinding.ItemArticleBinding
 import com.tonyDash.wanandroid.ui.main.home.model.Article
 
+/**
+ * 继承最简单的BaseQuickAdapter
+ * 列表子view布局统一时使用
+ */
 class PopularAdapter : BaseQuickAdapter<Article, BaseDataBindingHolder<ItemArticleBinding>>(R.layout.item_article) {
     override fun convert(holder: BaseDataBindingHolder<ItemArticleBinding>, item: Article) {
         val dataBinding = holder.dataBinding
