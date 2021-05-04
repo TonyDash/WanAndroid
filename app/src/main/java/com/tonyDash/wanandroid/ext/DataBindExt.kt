@@ -50,6 +50,20 @@ fun loadAuthor(textView:TextView,item: Article){
     }
 }
 
+@BindingAdapter("htmlText")
+fun formatHtmlText(textView: TextView,content:String){
+    textView.text = content.htmlToSpanned()
+}
+
+@BindingAdapter("descVisible")
+fun checkArticleDesc(textView: TextView,content:String){
+    textView.visibility = content.isEmpty().yes {
+        View.GONE
+    }.otherwise {
+        View.VISIBLE
+    }
+}
+
 ////DataBinding类型转换
 //@BindingConversion
 //fun setReposLanguageBg(reposItemModel: ReposItemModel): Drawable? =
