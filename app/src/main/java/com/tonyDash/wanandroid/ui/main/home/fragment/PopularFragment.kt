@@ -1,5 +1,6 @@
 package com.tonyDash.wanandroid.ui.main.home.fragment
 
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cjy.baselibrary.baseExt.otherwise
@@ -26,22 +27,18 @@ class PopularFragment : BaseListMVFragment<Article>() {
     }
 
     override fun initRecyclerView() {
-//        val type = Type<ItemArticleBinding>(R.layout.item_article)
-//            .onClick {
-//
-//            }
         val mRecyclerView = mRootView?.findViewById<RecyclerView>(R.id.mRecyclerView)
         mRecyclerView?.run {
-//            LastAdapter(mListData, BR.itemArticle)
-//                .map<Article>(type)
-//                .into(mRecyclerView.apply {
-//                    layoutManager = LinearLayoutManager(mActivity)
-//                })
             this.adapter = mAdapter
             this.layoutManager = LinearLayoutManager(mActivity)
             mAdapter.setList(mListData)
         }
-
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            Toast.makeText(mActivity, "itemClick $position", Toast.LENGTH_SHORT).show()
+        }
+        mAdapter.setOnItemChildClickListener { adapter, view, position ->
+            Toast.makeText(mActivity, "itemChildClick $position", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun initData() {

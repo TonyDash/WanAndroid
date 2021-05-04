@@ -13,6 +13,7 @@ import com.tonyDash.wanandroid.ui.main.home.model.Article
 class PopularAdapter : BaseQuickAdapter<Article, BaseDataBindingHolder<ItemArticleBinding>>(R.layout.item_article) {
     override fun convert(holder: BaseDataBindingHolder<ItemArticleBinding>, item: Article) {
         val dataBinding = holder.dataBinding
+        addChildClickViewIds(R.id.iv_collect)
         dataBinding?.run {
             this.itemArticle = item
             this.executePendingBindings()
