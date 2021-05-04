@@ -14,4 +14,7 @@ interface HomeApi {
     @GET("/article/list/{page}/json")
     suspend fun getArticleList(@Path("page") page: Int): ApiResult<Pagination<Article>>
 
+    @GET("/article/listproject/{page}/json")
+    suspend fun getProjectList(@Path("page") page: Int): ApiResult<Pagination<Article>>
+
 }

@@ -76,12 +76,8 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(), OnRefreshListener,
         }
     }
 
-    open fun refreshSuccess(){
-
-    }
-    open fun loadMoreSuccess(){
-
-    }
+    abstract fun refreshSuccess()
+    abstract fun loadMoreSuccess()
     abstract fun initRecyclerView()
 
     abstract fun getListData()

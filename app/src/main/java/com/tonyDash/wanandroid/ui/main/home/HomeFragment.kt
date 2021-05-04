@@ -38,6 +38,9 @@ class HomeFragment : BaseDataBindVMFragment<FragmentHomeBinding>() {
         viewPager.offscreenPageLimit = fragments.size
         tabLayout.setupWithViewPager(viewPager)
 
+        /**
+         * 滚动时，底部栏是否收起
+         */
 //        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, offset ->
 //            if (activity is MainActivity && this.currentOffset != offset) {
 //                (activity as MainActivity).animateBottomNavigationView(offset > currentOffset)
