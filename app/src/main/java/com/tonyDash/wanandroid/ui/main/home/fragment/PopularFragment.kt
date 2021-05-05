@@ -7,11 +7,7 @@ import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.fragment.BaseListMVFragment
 import com.cjy.baselibrary.viewModel.BaseViewModel
-import com.github.nitrico.lastadapter.LastAdapter
-import com.github.nitrico.lastadapter.Type
-import com.tonyDash.wanandroid.BR
 import com.tonyDash.wanandroid.R
-import com.tonyDash.wanandroid.databinding.ItemArticleBinding
 import com.tonyDash.wanandroid.ui.main.home.adapter.PopularAdapter
 import com.tonyDash.wanandroid.ui.main.home.model.Article
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.PopularViewModel

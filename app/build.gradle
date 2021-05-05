@@ -53,7 +53,6 @@ dependencies {
     implementation "androidx.room:room-ktx:2.2.5"
 
     //第三方库
-    implementation 'com.github.nitrico.lastadapter:lastadapter:2.3.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     //如果你项目中没有使用kotlin 那么可以使用annotationProcessor
     //如果你项目中使用了kotlin 那么必须要使用kapt

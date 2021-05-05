@@ -1,5 +1,7 @@
 package com.tonyDash.wanandroid.ui.main.home.fragment
 
+import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cjy.baselibrary.baseExt.otherwise
@@ -32,6 +34,13 @@ class LatestFragment : BaseListMVFragment<Article>() {
             this.adapter = mAdapter
             this.layoutManager = LinearLayoutManager(mActivity)
             mAdapter.setList(mListData)
+        }
+        mAdapter.addChildClickViewIds(R.id.iv_collect)
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            Toast.makeText(mActivity, "itemClick $position", Toast.LENGTH_SHORT).show()
+        }
+        mAdapter.setOnItemChildClickListener { adapter, view, position ->
+            Toast.makeText(mActivity, "itemChildClick $position", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -31,7 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }
@@ -67,8 +67,9 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     api 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
 
-
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
-    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+    // 注意：分包之后不会有默认的Header和Footer需要手动添加！还是原来的三种方法！
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
+    api 'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
+    api 'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
     api 'com.github.Kennyc1012:MultiStateView:2.1.2'
 }
