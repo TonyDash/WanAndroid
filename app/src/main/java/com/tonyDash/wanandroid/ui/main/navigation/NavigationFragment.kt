@@ -19,4 +19,8 @@ class NavigationFragment:BaseDataBindVMFragment<FragmentHomeBinding>(){
     override fun initView() {
 
     }
+
+    override fun initData() {
+
+    }
 }

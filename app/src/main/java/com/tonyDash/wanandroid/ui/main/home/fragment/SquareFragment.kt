@@ -2,33 +2,28 @@ package com.tonyDash.wanandroid.ui.main.home.fragment
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cjy.baselibrary.baseExt.otherwise
-import com.cjy.baselibrary.baseExt.yes
+import com.chad.library.adapter.base.BaseBinderAdapter
 import com.cjy.baselibrary.fragment.BaseListMVFragment
 import com.cjy.baselibrary.viewModel.BaseViewModel
 import com.tonyDash.wanandroid.R
-import com.tonyDash.wanandroid.ui.main.home.adapter.LatestAdapter
-import com.tonyDash.wanandroid.ui.main.home.adapter.binder.LatestBinder
+import com.tonyDash.wanandroid.ui.main.home.adapter.binder.SquareBinder
 import com.tonyDash.wanandroid.ui.main.home.model.Article
-import com.tonyDash.wanandroid.ui.main.home.viewmodel.LatestViewModel
+import com.tonyDash.wanandroid.ui.main.home.viewmodel.SquareViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LatestFragment : BaseListMVFragment<Article>() {
+class SquareFragment:BaseListMVFragment<Article>() {
 
-    private val viewModel: LatestViewModel by viewModel()
-
-    private val mAdapter = LatestAdapter()
-
-    override fun getViewModel(): BaseViewModel = viewModel
+    private val viewModel:SquareViewModel by viewModel()
+    private val mAdapter = BaseBinderAdapter()
 
     companion object {
-        fun newInstance() = LatestFragment()
+        fun newInstance() = SquareFragment()
     }
 
     override fun initRecyclerView() {
         val mRecyclerView = mRootView?.findViewById<RecyclerView>(R.id.mRecyclerView)
         mRecyclerView?.run {
-            mAdapter.addItemBinder(Article::class.java, LatestBinder())
+            mAdapter.addItemBinder(Article::class.java, SquareBinder())
             this.adapter = mAdapter
             this.layoutManager = LinearLayoutManager(mActivity)
             mAdapter.setList(mListData)
@@ -45,10 +40,6 @@ class LatestFragment : BaseListMVFragment<Article>() {
         initViewModelAction()
     }
 
-    override fun getListData() {
-        viewModel.getListData()
-    }
-
     override fun refreshSuccess() {
         mAdapter.addData(mListData)
     }
@@ -56,4 +47,11 @@ class LatestFragment : BaseListMVFragment<Article>() {
     override fun loadMoreSuccess() {
         mAdapter.addData(mListData)
     }
+
+
+    override fun getListData() {
+        viewModel.getListData()
+    }
+
+    override fun getViewModel(): BaseViewModel = viewModel
 }

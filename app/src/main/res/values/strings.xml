@@ -7,7 +7,8 @@
     <string name="mine">我的</string>
     <string name="search_hint">搜索关键词以空格隔开</string>
     <string name="popular_articles">热门</string>
-    <string name="latest_project">最新</string>
+    <string name="latest_articles">最新</string>
+    <string name="square_articles">广场</string>
     <string name="top">置顶</string>
     <string name="fresh">新</string>
     <string name="anonymous">匿名</string>

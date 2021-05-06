@@ -3,8 +3,10 @@ package com.tonyDash.wanandroid.ui.main.home.api
 import com.cjy.networklibrary.result.ApiResult
 import com.cjy.networklibrary.result.Pagination
 import com.tonyDash.wanandroid.ui.main.home.model.Article
+import com.tonyDash.wanandroid.ui.main.home.model.Category
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface HomeApi {
 
@@ -16,5 +18,17 @@ interface HomeApi {
 
     @GET("/article/listproject/{page}/json")
     suspend fun getProjectList(@Path("page") page: Int): ApiResult<Pagination<Article>>
+
+    @GET("/user_article/list/{page}/json")
+    suspend fun getUserArticleList(@Path("page") page: Int): ApiResult<Pagination<Article>>
+
+    @GET("project/tree/json")
+    suspend fun getProjectCategories(): ApiResult<MutableList<Category>>
+
+    @GET("project/list/{page}/json")
+    suspend fun getProjectListByCid(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): ApiResult<Pagination<Article>>
 
 }

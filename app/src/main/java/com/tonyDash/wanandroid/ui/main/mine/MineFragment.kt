@@ -19,4 +19,8 @@ class MineFragment:BaseDataBindVMFragment<FragmentHomeBinding>(){
     override fun initView() {
 
     }
+
+    override fun initData() {
+
+    }
 }

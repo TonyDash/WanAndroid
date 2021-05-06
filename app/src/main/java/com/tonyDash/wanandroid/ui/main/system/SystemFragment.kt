@@ -19,4 +19,8 @@ class SystemFragment:BaseDataBindVMFragment<FragmentHomeBinding>(){
     override fun initView() {
 
     }
+
+    override fun initData() {
+
+    }
 }

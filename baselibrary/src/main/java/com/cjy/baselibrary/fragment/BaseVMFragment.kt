@@ -91,9 +91,7 @@ abstract class BaseVMFragment:Fragment() {
 
     abstract fun initView()
 
-    open fun initData() {
-
-    }
+    abstract fun initData()
 
     open fun showLoading() {
 

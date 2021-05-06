@@ -8,6 +8,7 @@ import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.databinding.FragmentHomeBinding
 import com.tonyDash.wanandroid.ui.main.home.fragment.LatestFragment
 import com.tonyDash.wanandroid.ui.main.home.fragment.PopularFragment
+import com.tonyDash.wanandroid.ui.main.home.fragment.SquareFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseDataBindVMFragment<FragmentHomeBinding>() {
@@ -28,11 +29,14 @@ class HomeFragment : BaseDataBindVMFragment<FragmentHomeBinding>() {
     override fun initView() {
         fragments = listOf(
             PopularFragment.newInstance(),
-            LatestFragment.newInstance()
+            LatestFragment.newInstance(),
+            SquareFragment.newInstance()
         )
         val titles = listOf<CharSequence>(
             getString(R.string.popular_articles),
-            getString(R.string.latest_project)
+            getString(R.string.latest_articles),
+            getString(R.string.square_articles)
+
         )
         viewPager.adapter = SimpleFragmentPagerAdapter(childFragmentManager, fragments, titles)
         viewPager.offscreenPageLimit = fragments.size
@@ -47,5 +51,8 @@ class HomeFragment : BaseDataBindVMFragment<FragmentHomeBinding>() {
 //                currentOffset = offset
 //            }
 //        })
+    }
+
+    override fun initData() {
     }
 }

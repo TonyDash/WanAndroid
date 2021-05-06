@@ -21,7 +21,7 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(),
 
     protected val mListData = ObservableArrayList<M>()
 
-    protected var mPage = 1
+    protected var mIsRefresh = true
 
     override fun getLayoutRes(): Int = R.layout.common_refresh_recyclerview
 
@@ -40,17 +40,17 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(),
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
-        mPage = 1
+        mIsRefresh = true
         initViewModelAction()
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout) {
-        mPage++
+        mIsRefresh = false
         initViewModelAction()
     }
 
     protected fun initViewModelAction() {
-        (mPage == 1).yes {
+        mIsRefresh.yes {
             mRefreshLayout.autoRefreshAnimationOnly()
         }
         getListData()
@@ -60,7 +60,7 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(),
         (it != null && it.isNotEmpty()).yes {
             mMultipleStatusView.viewState = MultiStateView.ViewState.CONTENT
         }
-        (mPage == 1).yes {
+        mIsRefresh.yes {
             mListData.clear()
             mListData.addAll(it)
             refreshSuccess()

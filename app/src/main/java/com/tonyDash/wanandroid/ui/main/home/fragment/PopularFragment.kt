@@ -30,10 +30,8 @@ class PopularFragment : BaseListMVFragment<Article>() {
             mAdapter.setList(mListData)
         }
         mAdapter.setOnItemClickListener { adapter, view, position ->
-            Toast.makeText(mActivity, "itemClick $position", Toast.LENGTH_SHORT).show()
         }
         mAdapter.setOnItemChildClickListener { adapter, view, position ->
-            Toast.makeText(mActivity, "itemChildClick $position", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -43,11 +41,7 @@ class PopularFragment : BaseListMVFragment<Article>() {
     }
 
     override fun getListData() {
-        (mPage == 1).yes {
-            viewModel.refreshArticleList()
-        }.otherwise {
-            viewModel.loadMoreArticleList()
-        }
+        viewModel.getListData()
     }
 
     override fun refreshSuccess() {
