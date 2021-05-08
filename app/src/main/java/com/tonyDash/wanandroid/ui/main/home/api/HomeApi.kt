@@ -31,4 +31,12 @@ interface HomeApi {
         @Query("cid") cid: Int
     ): ApiResult<Pagination<Article>>
 
+    @GET("wxarticle/chapters/json")
+    suspend fun getWechatCategories(): ApiResult<MutableList<Category>>
+
+    @GET("wxarticle/list/{id}/{page}/json")
+    suspend fun getWechatArticleList(
+        @Path("page") page: Int,
+        @Path("id") id: Int
+    ): ApiResult<Pagination<Article>>
 }
