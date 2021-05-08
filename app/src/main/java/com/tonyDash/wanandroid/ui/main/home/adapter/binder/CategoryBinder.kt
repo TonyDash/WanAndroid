@@ -7,6 +7,7 @@ import com.tonyDash.wanandroid.databinding.ItemCategorySubBinding
 import com.tonyDash.wanandroid.ui.main.home.model.Category
 
 class CategoryBinder:QuickDataBindingItemBinder<Category,ItemCategorySubBinding>() {
+
     override fun convert(holder: BinderDataBindingHolder<ItemCategorySubBinding>, data: Category) {
         val dataBinding = holder.dataBinding
         dataBinding.category = data
@@ -20,5 +21,4 @@ class CategoryBinder:QuickDataBindingItemBinder<Category,ItemCategorySubBinding>
     ): ItemCategorySubBinding {
         return ItemCategorySubBinding.inflate(layoutInflater,parent,false)
     }
-
 }

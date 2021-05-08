@@ -27,7 +27,7 @@ class PopularFragment : BaseListMVFragment<Article>() {
         mRecyclerView?.run {
             this.adapter = mAdapter
             this.layoutManager = LinearLayoutManager(mActivity)
-            mAdapter.setList(mListData)
+            mAdapter.setList(viewModel.articleList.value)
         }
         mAdapter.setOnItemClickListener { adapter, view, position ->
         }
@@ -45,11 +45,11 @@ class PopularFragment : BaseListMVFragment<Article>() {
     }
 
     override fun refreshSuccess() {
-        mAdapter.addData(mListData)
+        mAdapter.setList(viewModel.articleList.value)
     }
 
     override fun loadMoreSuccess() {
-        mAdapter.addData(mListData)
+        mAdapter.setList(viewModel.articleList.value)
     }
 
     override fun getViewModel(): BaseViewModel = viewModel

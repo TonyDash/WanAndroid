@@ -19,20 +19,13 @@ class ProjectViewModel(private val repository: ProjectRepository) : BaseViewMode
         const val INITIAL_PAGE = 1
     }
 
-    private var page = INITIAL_PAGE + 1
-
-    fun getListData(){
-        (page== SquareViewModel.INITIAL_PAGE).yes {
-            refreshProjectList()
-        }.otherwise {
-            loadMoreProjectList()
-        }
-    }
+    var page = INITIAL_PAGE + 1
 
     fun getProjectCategory() = launch {
         val categoryList = repository.getProjectCategories()
         val checkedPosition = INITIAL_CHECKED
         val cid = categoryList[checkedPosition].id
+        categoryList[checkedPosition].isChecked = true
         val pagination = repository.getProjectListByCid(INITIAL_PAGE, cid)
         page = pagination.curPage
         categories.value = categoryList
@@ -40,20 +33,25 @@ class ProjectViewModel(private val repository: ProjectRepository) : BaseViewMode
         articleList.value = pagination.datas.toMutableList()
     }
 
-    private fun refreshProjectList(checkedPosition: Int = this.checkedPosition.value ?: INITIAL_CHECKED) =
+    fun refreshProjectList(
+        checkedPosition: Int = this.checkedPosition.value ?: INITIAL_CHECKED
+    ) =
         launch {
+            val categoryList = categories.value ?: return@launch
             if (checkedPosition != this@ProjectViewModel.checkedPosition.value) {
+                categoryList[this@ProjectViewModel.checkedPosition.value
+                    ?: INITIAL_CHECKED].isChecked = false
                 articleList.value = mutableListOf()
                 this@ProjectViewModel.checkedPosition.value = checkedPosition
             }
-            val categoryList = categories.value ?: return@launch
             val cid = categoryList[checkedPosition].id
+            categoryList[checkedPosition].isChecked = true
             val pagination = repository.getProjectListByCid(INITIAL_PAGE, cid)
             page = pagination.curPage
             articleList.value = pagination.datas.toMutableList()
         }
 
-    private fun loadMoreProjectList() = launch {
+    fun loadMoreProjectList() = launch {
         val categoryList = categories.value ?: return@launch
         val checkedPosition = checkedPosition.value ?: return@launch
         val cid = categoryList[checkedPosition].id

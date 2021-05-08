@@ -3,6 +3,8 @@ package com.tonyDash.wanandroid.ui.main.home.fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseBinderAdapter
+import com.cjy.baselibrary.baseExt.otherwise
+import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.fragment.BaseCategoryListMVFragment
 import com.cjy.baselibrary.viewModel.BaseViewModel
 import com.tonyDash.wanandroid.R
@@ -27,7 +29,11 @@ class ProjectFragment:BaseCategoryListMVFragment<Category,Article>() {
         rvCategory?.run {
             categoryAdapter.addItemBinder(Category::class.java,CategoryBinder())
             this.adapter = categoryAdapter
-            categoryAdapter.setList(mCategoryData)
+            categoryAdapter.setList(viewModel.categories.value)
+            categoryAdapter.setOnItemClickListener { _, _, position ->
+                viewModel.refreshProjectList(position)
+                categoryAdapter.notifyDataSetChanged()
+            }
         }
     }
 
@@ -37,24 +43,28 @@ class ProjectFragment:BaseCategoryListMVFragment<Category,Article>() {
             articleAdapter.addItemBinder(Article::class.java,ProjectBinder())
             this.adapter = articleAdapter
             this.layoutManager = LinearLayoutManager(mActivity)
-            articleAdapter.setList(mListData)
+            articleAdapter.setList(viewModel.articleList.value)
         }
     }
 
     override fun getListData() {
-        viewModel.getListData()
+        mIsRefresh.yes {
+            viewModel.refreshProjectList()
+        }.otherwise {
+            viewModel.loadMoreProjectList()
+        }
     }
 
     override fun loadCategorySuccess() {
-        categoryAdapter.setList(mCategoryData)
+        categoryAdapter.setList(viewModel.categories.value)
     }
 
     override fun refreshSuccess() {
-        articleAdapter.setList(mListData)
+        articleAdapter.setList(viewModel.articleList.value)
     }
 
     override fun loadMoreSuccess() {
-        articleAdapter.setList(mListData)
+        articleAdapter.setList(viewModel.articleList.value)
     }
 
     override fun getViewModel(): BaseViewModel = viewModel

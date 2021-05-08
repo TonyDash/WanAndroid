@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.common_refresh_recyclerview.*
 abstract class BaseListMVFragment<M> : BaseVMFragment(),
     OnRefreshListener, OnLoadMoreListener {
 
-    protected val mListData = ObservableArrayList<M>()
+//    protected val mListData = ObservableArrayList<M>()
 
     protected var mIsRefresh = true
 
@@ -62,12 +62,12 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(),
             mMultipleStatusView.viewState = MultiStateView.ViewState.CONTENT
         }
         mIsRefresh.yes {
-            mListData.clear()
-            mListData.addAll(it)
+//            mListData.clear()
+//            mListData.addAll(it)
             refreshSuccess()
             mRefreshLayout.finishRefresh()
         }.otherwise {
-            mListData.addAll(it)
+//            mListData.addAll(it)
             loadMoreSuccess()
             mRefreshLayout.finishLoadMore()
         }

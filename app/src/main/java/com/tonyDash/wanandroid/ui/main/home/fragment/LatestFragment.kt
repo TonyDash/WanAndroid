@@ -31,7 +31,7 @@ class LatestFragment : BaseListMVFragment<Article>() {
             mAdapter.addItemBinder(Article::class.java, LatestBinder())
             this.adapter = mAdapter
             this.layoutManager = LinearLayoutManager(mActivity)
-            mAdapter.setList(mListData)
+            mAdapter.setList(viewModel.articleList.value)
         }
         mAdapter.addChildClickViewIds(R.id.iv_collect)
         mAdapter.setOnItemClickListener { adapter, view, position ->
@@ -50,10 +50,10 @@ class LatestFragment : BaseListMVFragment<Article>() {
     }
 
     override fun refreshSuccess() {
-        mAdapter.addData(mListData)
+        mAdapter.setList(viewModel.articleList.value)
     }
 
     override fun loadMoreSuccess() {
-        mAdapter.addData(mListData)
+        mAdapter.setList(viewModel.articleList.value)
     }
 }
