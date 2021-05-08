@@ -17,16 +17,19 @@ import kotlinx.android.synthetic.main.common_refresh_recyclerview.*
  * 分页列表页面封装
  * 界面数据为列表式，继承这个父类
  */
-abstract class BaseListMVFragment<M> : BaseVMFragment(),
+abstract class BaseCategoryListMVFragment<C,M> : BaseVMFragment(),
     OnRefreshListener, OnLoadMoreListener {
 
     protected val mListData = ObservableArrayList<M>()
 
+    protected val mCategoryData = ObservableArrayList<C>()
+
     protected var mIsRefresh = true
 
-    override fun getLayoutRes(): Int = R.layout.common_refresh_recyclerview
+    override fun getLayoutRes(): Int = R.layout.common_category_list_recyclerview
 
     override fun initView() {
+        initCategoryRecyclerView()
         initRefreshLayout()
         initRecyclerView()
     }
@@ -35,8 +38,8 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(),
         mRefreshLayout.run {
             setRefreshHeader(ClassicsHeader(mActivity))
             setRefreshFooter(ClassicsFooter(mActivity))
-            setOnRefreshListener(this@BaseListMVFragment)
-            setOnLoadMoreListener(this@BaseListMVFragment)
+            setOnRefreshListener(this@BaseCategoryListMVFragment)
+            setOnLoadMoreListener(this@BaseCategoryListMVFragment)
         }
     }
 
@@ -55,6 +58,15 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(),
             mRefreshLayout.autoRefreshAnimationOnly()
         }
         getListData()
+    }
+
+    protected val mCategoryObserver = Observer<List<C>>{
+        (!it.isNullOrEmpty()).yes {
+            mCategoryData.clear()
+            mCategoryData.addAll(it)
+            loadCategorySuccess()
+            dismissLoading()
+        }
     }
 
     protected val mListObserver = Observer<List<M>> {
@@ -80,10 +92,10 @@ abstract class BaseListMVFragment<M> : BaseVMFragment(),
         }
     }
 
+    abstract fun initCategoryRecyclerView()
+    abstract fun initRecyclerView()
+    abstract fun getListData()
     abstract fun refreshSuccess()
     abstract fun loadMoreSuccess()
-    abstract fun initRecyclerView()
-
-    abstract fun getListData()
-
+    abstract fun loadCategorySuccess()
 }

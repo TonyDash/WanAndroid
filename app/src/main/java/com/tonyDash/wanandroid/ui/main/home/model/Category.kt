@@ -12,5 +12,6 @@ data class Category(
     val parentChapterId: Int,
     val userControlSetTop: Boolean,
     val visible: Int,
-    val children: ArrayList<Category>
+    val children: ArrayList<Category>,
+    var isChecked:Boolean = false
 ) : Parcelable

@@ -3,9 +3,11 @@ import com.tonyDash.wanandroid.network.HomeApiService
 import com.tonyDash.wanandroid.ui.main.home.api.HomeApi
 import com.tonyDash.wanandroid.ui.main.home.repository.LatestRepository
 import com.tonyDash.wanandroid.ui.main.home.repository.PopularRepository
+import com.tonyDash.wanandroid.ui.main.home.repository.ProjectRepository
 import com.tonyDash.wanandroid.ui.main.home.repository.SquareRepository
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.LatestViewModel
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.PopularViewModel
+import com.tonyDash.wanandroid.ui.main.home.viewmodel.ProjectViewModel
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.SquareViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -14,6 +16,7 @@ val viewModelModule = module {
     viewModel { PopularViewModel(get()) }
     viewModel { LatestViewModel(get()) }
     viewModel { SquareViewModel(get()) }
+    viewModel { ProjectViewModel(get()) }
 }
 
 val reposModule = module {
@@ -21,6 +24,7 @@ val reposModule = module {
     factory { PopularRepository(get()) }
     factory { LatestRepository(get()) }
     factory { SquareRepository(get()) }
+    factory { ProjectRepository(get()) }
 }
 
 val remoteModule = module {

@@ -9,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 
 /**
  * Fragment懒加载(DataBinding + ViewModel)
+ * 非分页界面用这个
  */
 abstract class BaseDataBindVMFragment<DB : ViewDataBinding> : BaseVMFragment() {
 
