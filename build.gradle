@@ -5,8 +5,9 @@ buildscript {
     ext {
         compileSdkVersion = 29
         buildToolsVersion = "29.0.3"
-        minSdkVersion = 21
+        minSdkVersion = 23
         targetSdkVersion = 29
+        googleAutoServiceDependency = 'com.google.auto.service:auto-service:1.0-rc7'
     }
     repositories {
         google()

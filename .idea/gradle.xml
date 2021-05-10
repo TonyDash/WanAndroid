@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/baselibrary" />
             <option value="$PROJECT_DIR$/commonlibrary" />
             <option value="$PROJECT_DIR$/networkLibrary" />
+            <option value="$PROJECT_DIR$/webviewLibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -46,6 +46,8 @@ dependencies {
 
     implementation project(path: ':commonlibrary')
     implementation project(path: ':networkLibrary')
+    implementation project(path: ':LaunchStarter')
+    implementation project(path:':webviewLibrary')
 
     //协程 + room
     implementation "androidx.room:room-runtime:2.2.5"
@@ -60,7 +62,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation project(path: ':LaunchStarter')
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 }

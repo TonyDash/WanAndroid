@@ -1,12 +1,12 @@
 package com.tonyDash.wanandroid.ui.main.home.fragment
 
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cjy.baselibrary.baseExt.otherwise
-import com.cjy.baselibrary.baseExt.yes
+import com.cjy.baselibrary.autoService.myServiceLoader
 import com.cjy.baselibrary.fragment.BaseListMVFragment
+import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.baselibrary.viewModel.BaseViewModel
+import com.cjy.commonlibrary.autoservice.IWebViewService
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.ui.main.home.adapter.PopularAdapter
 import com.tonyDash.wanandroid.ui.main.home.model.Article
@@ -30,6 +30,11 @@ class PopularFragment : BaseListMVFragment<Article>() {
             mAdapter.setList(viewModel.articleList.value)
         }
         mAdapter.setOnItemClickListener { adapter, view, position ->
+            val article = GsonUtil.instance.toJsonString(mAdapter.data[position])
+            val webservice:IWebViewService? = myServiceLoader.load(IWebViewService::class.java)
+            webservice?.run {
+                this.startWebViewActivity(mActivity, mapOf(IWebViewService.PARAM_ARTICLE to article))
+            }
         }
         mAdapter.setOnItemChildClickListener { adapter, view, position ->
         }

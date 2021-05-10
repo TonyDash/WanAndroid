@@ -1,3 +1,4 @@
+include ':webviewLibrary'
 include ':networkLibrary'
 include ':commonlibrary'
 include ':baselibrary'
