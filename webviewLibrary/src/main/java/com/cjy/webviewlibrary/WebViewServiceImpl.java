@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.cjy.commonlibrary.autoservice.IWebViewService;
+import com.cjy.webviewlibrary.activity.AgentWebViewActivity;
+import com.cjy.webviewlibrary.activity.DefaultWebViewActivity;
 import com.cjy.webviewlibrary.utils.IntentUtil;
 import com.google.auto.service.AutoService;
 
@@ -14,7 +16,8 @@ import java.util.Map;
 public class WebViewServiceImpl implements IWebViewService {
     @Override
     public void startWebViewActivity(@NotNull Activity fromActivity, @NotNull Map<String, ?> params) {
-        Intent intent = new Intent(fromActivity,WebViewActivity.class);
+//        Intent intent = new Intent(fromActivity, DefaultWebViewActivity.class);
+        Intent intent = new Intent(fromActivity, AgentWebViewActivity.class);
         Intent intentByParams = IntentUtil.addParams(intent, params);
         fromActivity.startActivity(intentByParams);
     }

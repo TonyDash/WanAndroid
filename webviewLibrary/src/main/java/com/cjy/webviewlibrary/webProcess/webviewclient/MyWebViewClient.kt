@@ -5,7 +5,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
-import com.cjy.webviewlibrary.WebViewCallBack
+import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
 import com.just.agentweb.WebViewClient
 
 class MyWebViewClient : WebViewClient {

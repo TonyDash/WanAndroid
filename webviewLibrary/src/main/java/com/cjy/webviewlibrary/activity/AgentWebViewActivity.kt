@@ -1,10 +1,9 @@
-package com.cjy.webviewlibrary
+package com.cjy.webviewlibrary.activity
 
 import android.net.Uri
 import android.util.Log
 import android.view.KeyEvent
 import android.view.ViewGroup
-import android.webkit.ConsoleMessage
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import com.cjy.baselibrary.activity.BaseActivity
@@ -12,6 +11,8 @@ import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService.Companion.PARAM_ARTICLE
+import com.cjy.webviewlibrary.R
+import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
 import com.cjy.webviewlibrary.ext.htmlToSpanned
 import com.cjy.webviewlibrary.model.Article
 import com.cjy.webviewlibrary.utils.whiteHostList
@@ -19,23 +20,19 @@ import com.cjy.webviewlibrary.webProcess.webchromeclient.MyWebChromeClient
 import com.cjy.webviewlibrary.webProcess.webviewclient.MyWebViewClient
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.DefaultWebClient
-import com.just.agentweb.WebChromeClient
-import com.just.agentweb.WebViewClient
-import kotlinx.android.synthetic.main.activity_webview.*
-import org.json.JSONObject
+import kotlinx.android.synthetic.main.activity_agent_webview.*
 
-class WebViewActivity : BaseActivity(), WebViewCallBack {
+class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
 
     private lateinit var article: Article
 
     private var agentWeb: AgentWeb? = null
 
-    override fun getLayoutId(): Int = R.layout.activity_webview
-
+    override fun getLayoutId(): Int = R.layout.activity_agent_webview
 
     override fun initViews() {
         ivBack.setOnClickListener {
-            ActivityManager.finish(WebViewActivity::class.java)
+            ActivityManager.finish(AgentWebViewActivity::class.java)
         }
         ivMore.setOnClickListener {
 
@@ -150,10 +147,10 @@ class WebViewActivity : BaseActivity(), WebViewCallBack {
     }
 
     override fun pageStarted(url: String) {
-
+        Log.d("TAG", "pageStarted")
     }
 
-    override fun pageFinished(view: WebView,url: String) {
+    override fun pageFinished(view: WebView, url: String) {
         view.loadUrl(customJs(url))
     }
 
