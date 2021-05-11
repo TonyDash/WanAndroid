@@ -9,11 +9,14 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import com.cjy.baselibrary.activity.BaseActivity
 import com.cjy.baselibrary.baseExt.yes
+import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService.Companion.PARAM_ARTICLE
 import com.cjy.webviewlibrary.ext.htmlToSpanned
 import com.cjy.webviewlibrary.model.Article
 import com.cjy.webviewlibrary.utils.whiteHostList
+import com.cjy.webviewlibrary.webProcess.webchromeclient.MyWebChromeClient
+import com.cjy.webviewlibrary.webProcess.webviewclient.MyWebViewClient
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.DefaultWebClient
 import com.just.agentweb.WebChromeClient
@@ -21,7 +24,7 @@ import com.just.agentweb.WebViewClient
 import kotlinx.android.synthetic.main.activity_webview.*
 import org.json.JSONObject
 
-class WebViewActivity : BaseActivity() {
+class WebViewActivity : BaseActivity(), WebViewCallBack {
 
     private lateinit var article: Article
 
@@ -32,7 +35,7 @@ class WebViewActivity : BaseActivity() {
 
     override fun initViews() {
         ivBack.setOnClickListener {
-
+            ActivityManager.finish(WebViewActivity::class.java)
         }
         ivMore.setOnClickListener {
 
@@ -40,42 +43,20 @@ class WebViewActivity : BaseActivity() {
     }
 
     override fun initData() {
-        val articleStr:String = intent?.getStringExtra(PARAM_ARTICLE) ?: return
+        val articleStr: String = intent?.getStringExtra(PARAM_ARTICLE) ?: return
         (articleStr.isNotEmpty()).yes {
-            article = GsonUtil.instance.parse(articleStr,Article::class.java)?: Article()
+            article = GsonUtil.instance.parse(articleStr, Article::class.java) ?: Article()
         }
         tvTitle.text = article.title.htmlToSpanned()
         agentWeb = AgentWeb.with(this)
-            .setAgentWebParent(webContainer, ViewGroup.LayoutParams(-1,-1))
+            .setAgentWebParent(webContainer, ViewGroup.LayoutParams(-1, -1))
             .useDefaultIndicator(getColor(R.color.textColorPrimary), 2)
             .interceptUnkownUrl()
             .setMainFrameErrorView(R.layout.include_reload, R.id.btnReload)
             .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
             .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
-            .setWebChromeClient(object : WebChromeClient() {
-                override fun onReceivedTitle(view: WebView?, title: String?) {
-                    setTitle(title)
-                    super.onReceivedTitle(view, title)
-                }
-
-                override fun onConsoleMessage(consoleMessage: ConsoleMessage?): Boolean {
-                    Log.d("WanAandroidWebView", "${consoleMessage?.message()}")
-                    return super.onConsoleMessage(consoleMessage)
-                }
-            })
-            .setWebViewClient(object : WebViewClient() {
-                override fun shouldOverrideUrlLoading(
-                    view: WebView?,
-                    request: WebResourceRequest?
-                ): Boolean {
-                    return !whiteHostList().contains(request?.url?.host)
-                }
-
-                override fun onPageFinished(view: WebView?, url: String?) {
-                    super.onPageFinished(view, url)
-                    view?.loadUrl(customJs(url))
-                }
-            })
+            .setWebChromeClient(MyWebChromeClient(this))
+            .setWebViewClient(MyWebViewClient(this))
             .createAgentWeb()
             .ready()
             .get()
@@ -166,6 +147,26 @@ class WebViewActivity : BaseActivity() {
     override fun onDestroy() {
         agentWeb?.webLifeCycle?.onDestroy()
         super.onDestroy()
+    }
+
+    override fun pageStarted(url: String) {
+
+    }
+
+    override fun pageFinished(view: WebView,url: String) {
+        view.loadUrl(customJs(url))
+    }
+
+    override fun onError() {
+
+    }
+
+    override fun updateTitle(title: String) {
+        setTitle(title)
+    }
+
+    override fun shouldOverrideUrlLoading(request: WebResourceRequest): Boolean {
+        return !whiteHostList().contains(request.url?.host)
     }
 
 }
