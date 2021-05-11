@@ -11,6 +11,7 @@ import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService.Companion.PARAM_ARTICLE
+import com.cjy.webviewlibrary.ActionFragment
 import com.cjy.webviewlibrary.R
 import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
 import com.cjy.webviewlibrary.ext.htmlToSpanned
@@ -35,7 +36,7 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
             ActivityManager.finish(AgentWebViewActivity::class.java)
         }
         ivMore.setOnClickListener {
-
+            ActionFragment.newInstance(article).show(supportFragmentManager)
         }
     }
 

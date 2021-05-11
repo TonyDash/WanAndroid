@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">玩安卓</string>
     <string name="network_not_available">网络似乎除了点问题&#8230;</string>
     <string name="reload">重新加载</string>
+
+    <string name="add_collect">加入收藏</string>
+    <string name="cancel_collect">取消收藏</string>
+    <string name="share">分享</string>
+    <string name="refresh_page">刷新页面</string>
+    <string name="copy_link">复制链接</string>
+    <string name="copy_success">复制成功</string>
+    <string name="open_in_explorer">浏览器打开</string>
 </resources>
