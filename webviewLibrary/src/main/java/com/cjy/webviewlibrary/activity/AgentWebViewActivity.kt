@@ -7,7 +7,9 @@ import android.view.KeyEvent
 import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.widget.Toast
 import com.cjy.baselibrary.activity.BaseActivity
+import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.utils.GsonUtil
@@ -16,9 +18,11 @@ import com.cjy.webviewlibrary.fragment.ActionFragment
 import com.cjy.webviewlibrary.R
 import com.cjy.webviewlibrary.ext.htmlToSpanned
 import com.cjy.webviewlibrary.model.Article
+import com.cjy.webviewlibrary.model.CallBackResult
 import com.cjy.webviewlibrary.model.JsParam
 import com.cjy.webviewlibrary.utils.whiteHostList
 import com.cjy.webviewlibrary.webProcess.CommandDispatcher
+import com.cjy.webviewlibrary.webProcess.callback.BaseCommandCallBack
 import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
 import com.cjy.webviewlibrary.webProcess.webchromeclient.MyWebChromeClient
 import com.cjy.webviewlibrary.webProcess.webviewclient.MyWebViewClient
@@ -173,18 +177,23 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
         return !whiteHostList().contains(request.url?.host)
     }
 
-    fun checkLogin():Boolean{
-        val params = JsonObject()
-        params.addProperty("name","cjy")
-        takeNativeAction(GsonUtil.instance.toJsonString(JsParam("login",params)))
-        return true
+    fun checkLogin() {
+        takeNativeAction("login","")
     }
 
-    fun changeCollect(){
+    fun changeCollect() {
 
     }
 
-    private fun takeNativeAction(jsParam: String) {
+    private fun takeNativeAction(commandName:String,jsonParams:String) {
+        CommandDispatcher.instance.executeCommand(
+            commandName,
+            jsonParams,
+            this@AgentWebViewActivity
+        )
+    }
+
+    private fun takeJsAction(jsParam: String) {
         (jsParam.isNotEmpty()).yes {
             val jsParamObject = GsonUtil.instance.parse(jsParam, JsParam::class.java)
             jsParamObject?.run {
@@ -197,9 +206,15 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
         }
     }
 
-    fun handleCallback(callName: String, response: String) {
-        if (!TextUtils.isEmpty(callName) && !TextUtils.isEmpty(response)) {
-            Log.d("TAG", "handleCallback callName=$callName  response=$response")
+    fun handleCallback(callName: String,status:Boolean, response: String) {
+        when(callName){
+            "login"->{
+                status.yes {
+                    changeCollect()
+                }.otherwise {
+                    Toast.makeText(this,"未登录",Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 

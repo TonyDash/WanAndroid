@@ -11,6 +11,8 @@ import com.cjy.webviewlibrary.I2MainProcessAidlInterface
 import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface
 import com.cjy.webviewlibrary.activity.AgentWebViewActivity
 import com.cjy.webviewlibrary.mainProcess.MainProcessCommandService
+import com.cjy.webviewlibrary.model.CallBackResult
+import com.cjy.webviewlibrary.webProcess.callback.BaseCommandCallBack
 
 class CommandDispatcher private constructor() : ServiceConnection {
 
@@ -50,12 +52,21 @@ class CommandDispatcher private constructor() : ServiceConnection {
         initAidlConnection()
     }
 
+    fun executeCommand(commandName: String, jsonParams: String,callBack:BaseCommandCallBack){
+        i2MainProcessAidlInterface?.run {
+            this.handleWebCommand(commandName, jsonParams, object : I2WebViewProcessAidlInterface.Stub(){
+                override fun onResult(callName: String,status:Boolean, response: String) {
+                    callBack.onFinish(CallBackResult(callName,status,response))
+                }
+            })
+        }
+    }
 
     fun executeCommand(commandName: String, jsonParams: String,activity:AgentWebViewActivity){
         i2MainProcessAidlInterface?.run {
             this.handleWebCommand(commandName, jsonParams, object : I2WebViewProcessAidlInterface.Stub(){
-                override fun onResult(callName: String, response: String) {
-                    activity.handleCallback(callName,response)
+                override fun onResult(callName: String,status:Boolean, response: String) {
+                    activity.handleCallback(callName,status,response)
                 }
 
             })

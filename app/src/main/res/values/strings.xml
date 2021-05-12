@@ -14,4 +14,11 @@
     <string name="top">置顶</string>
     <string name="fresh">新</string>
     <string name="anonymous">匿名</string>
+    <string name="login">登录</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="go_register">去注册</string>
+    <string name="wanandroid">WANANDROID</string>
+    <string name="register">注册</string>
+    <string name="confirm_password">确认密码</string>
 </resources>

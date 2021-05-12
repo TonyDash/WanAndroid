@@ -55,13 +55,14 @@ class ActionFragment:BottomSheetDialogFragment() {
             llCollect.setOnClickListener {
                 val detailActivity = (activity as? AgentWebViewActivity)
                     ?: return@setOnClickListener
-                if (detailActivity.checkLogin()) {
-                    ivCollect.isSelected = !article.collect
-                    detailActivity.changeCollect()
-                    behavior?.state = BottomSheetBehavior.STATE_HIDDEN
-                } else {
-                    view.postDelayed({ dismiss() }, 300)
-                }
+//                if (detailActivity.checkLogin()) {
+//                    ivCollect.isSelected = !article.collect
+//                    detailActivity.changeCollect()
+//                    behavior?.state = BottomSheetBehavior.STATE_HIDDEN
+//                } else {
+//                    view.postDelayed({ dismiss() }, 300)
+//                }
+                detailActivity.checkLogin()
                 behavior?.state = BottomSheetBehavior.STATE_HIDDEN
             }
             llShare.setOnClickListener {

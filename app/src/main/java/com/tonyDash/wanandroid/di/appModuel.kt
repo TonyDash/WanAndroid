@@ -1,8 +1,10 @@
 package com.tonyDash.wanandroid.di
 import com.tonyDash.wanandroid.network.HomeApiService
+import com.tonyDash.wanandroid.network.UserApiService
 import com.tonyDash.wanandroid.ui.main.home.api.HomeApi
 import com.tonyDash.wanandroid.ui.main.home.repository.*
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.*
+import com.tonyDash.wanandroid.ui.main.mine.api.UserApi
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -26,6 +28,7 @@ val reposModule = module {
 val remoteModule = module {
     //single 单列注入
     single<HomeApi> { HomeApiService }
+    single<UserApi> { UserApiService }
 }
 
 val appModule = listOf(viewModelModule, reposModule,remoteModule)
