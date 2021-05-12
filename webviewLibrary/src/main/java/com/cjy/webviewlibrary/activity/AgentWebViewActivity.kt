@@ -1,6 +1,7 @@
 package com.cjy.webviewlibrary.activity
 
 import android.net.Uri
+import android.text.TextUtils
 import android.util.Log
 import android.view.KeyEvent
 import android.view.ViewGroup
@@ -11,17 +12,21 @@ import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService.Companion.PARAM_ARTICLE
-import com.cjy.webviewlibrary.ActionFragment
+import com.cjy.webviewlibrary.fragment.ActionFragment
 import com.cjy.webviewlibrary.R
-import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
 import com.cjy.webviewlibrary.ext.htmlToSpanned
 import com.cjy.webviewlibrary.model.Article
+import com.cjy.webviewlibrary.model.JsParam
 import com.cjy.webviewlibrary.utils.whiteHostList
+import com.cjy.webviewlibrary.webProcess.CommandDispatcher
+import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
 import com.cjy.webviewlibrary.webProcess.webchromeclient.MyWebChromeClient
 import com.cjy.webviewlibrary.webProcess.webviewclient.MyWebViewClient
+import com.google.gson.JsonObject
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.DefaultWebClient
 import kotlinx.android.synthetic.main.activity_agent_webview.*
+
 
 class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
 
@@ -70,6 +75,7 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
             }
         }
         agentWeb?.urlLoader?.loadUrl(article.link)
+        CommandDispatcher.instance.initAidlConnection()
     }
 
     /**
@@ -165,6 +171,36 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
 
     override fun shouldOverrideUrlLoading(request: WebResourceRequest): Boolean {
         return !whiteHostList().contains(request.url?.host)
+    }
+
+    fun checkLogin():Boolean{
+        val params = JsonObject()
+        params.addProperty("name","cjy")
+        takeNativeAction(GsonUtil.instance.toJsonString(JsParam("login",params)))
+        return true
+    }
+
+    fun changeCollect(){
+
+    }
+
+    private fun takeNativeAction(jsParam: String) {
+        (jsParam.isNotEmpty()).yes {
+            val jsParamObject = GsonUtil.instance.parse(jsParam, JsParam::class.java)
+            jsParamObject?.run {
+                CommandDispatcher.instance.executeCommand(
+                    jsParamObject.name,
+                    GsonUtil.instance.toJsonString(jsParamObject.params),
+                    this@AgentWebViewActivity
+                )
+            }
+        }
+    }
+
+    fun handleCallback(callName: String, response: String) {
+        if (!TextUtils.isEmpty(callName) && !TextUtils.isEmpty(response)) {
+            Log.d("TAG", "handleCallback callName=$callName  response=$response")
+        }
     }
 
 }

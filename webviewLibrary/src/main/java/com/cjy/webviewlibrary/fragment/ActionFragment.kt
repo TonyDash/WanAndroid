@@ -1,4 +1,4 @@
-package com.cjy.webviewlibrary
+package com.cjy.webviewlibrary.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService.Companion.PARAM_ARTICLE
+import com.cjy.webviewlibrary.R
 import com.cjy.webviewlibrary.activity.AgentWebViewActivity
 import com.cjy.webviewlibrary.ext.copyTextIntoClipboard
 import com.cjy.webviewlibrary.ext.openInExplorer
@@ -54,13 +55,13 @@ class ActionFragment:BottomSheetDialogFragment() {
             llCollect.setOnClickListener {
                 val detailActivity = (activity as? AgentWebViewActivity)
                     ?: return@setOnClickListener
-//                if (detailActivity.checkLogin()) {
-//                    ivCollect.isSelected = !article.collect
-//                    detailActivity.changeCollect()
-//                    behavior?.state = BottomSheetBehavior.STATE_HIDDEN
-//                } else {
-//                    view.postDelayed({ dismiss() }, 300)
-//                }
+                if (detailActivity.checkLogin()) {
+                    ivCollect.isSelected = !article.collect
+                    detailActivity.changeCollect()
+                    behavior?.state = BottomSheetBehavior.STATE_HIDDEN
+                } else {
+                    view.postDelayed({ dismiss() }, 300)
+                }
                 behavior?.state = BottomSheetBehavior.STATE_HIDDEN
             }
             llShare.setOnClickListener {

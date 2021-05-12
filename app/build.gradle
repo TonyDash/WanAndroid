@@ -54,6 +54,10 @@ dependencies {
     kapt "androidx.room:room-compiler:2.2.5"
     implementation "androidx.room:room-ktx:2.2.5"
 
+    //组件化autoService
+    implementation rootProject.ext.googleAutoServiceDependency
+    annotationProcessor rootProject.ext.googleAutoServiceDependency
+
     //第三方库
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     //如果你项目中没有使用kotlin 那么可以使用annotationProcessor

@@ -46,6 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //AgentWeb
     implementation 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx'
+
     //组件化autoService
     implementation rootProject.ext.googleAutoServiceDependency
     annotationProcessor rootProject.ext.googleAutoServiceDependency

@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.cjy.commonlibrary.autoservice.IWebViewService;
 import com.cjy.webviewlibrary.activity.AgentWebViewActivity;
-import com.cjy.webviewlibrary.activity.DefaultWebViewActivity;
 import com.cjy.webviewlibrary.utils.IntentUtil;
 import com.google.auto.service.AutoService;
 
