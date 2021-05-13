@@ -1,6 +1,10 @@
 package com.tonyDash.wanandroid.di
 import com.tonyDash.wanandroid.network.HomeApiService
 import com.tonyDash.wanandroid.network.UserApiService
+import com.tonyDash.wanandroid.room.historyDao
+import com.tonyDash.wanandroid.room.repository.HistoryRepository
+import com.tonyDash.wanandroid.room.repository.UserInfoRepository
+import com.tonyDash.wanandroid.room.userDao
 import com.tonyDash.wanandroid.ui.main.home.api.HomeApi
 import com.tonyDash.wanandroid.ui.main.home.repository.*
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.*
@@ -16,7 +20,7 @@ val viewModelModule = module {
     viewModel { SquareViewModel(get()) }
     viewModel { ProjectViewModel(get()) }
     viewModel { WeChatViewModel(get()) }
-    viewModel { LoginViewModel(get()) }
+    viewModel { LoginViewModel(get(),get()) }
 }
 
 val reposModule = module {
@@ -27,6 +31,8 @@ val reposModule = module {
     factory { ProjectRepository(get()) }
     factory { WeChatRepository(get()) }
     factory { LoginRepository(get()) }
+    factory { UserInfoRepository(get()) }
+    factory { HistoryRepository(get()) }
 }
 
 val remoteModule = module {
@@ -35,5 +41,11 @@ val remoteModule = module {
     single<UserApi> { UserApiService }
 }
 
-val appModule = listOf(viewModelModule, reposModule,remoteModule)
+
+val localModule = module {
+    single { userDao }
+    single { historyDao }
+}
+
+val appModule = listOf(viewModelModule, reposModule,remoteModule, localModule)
 
