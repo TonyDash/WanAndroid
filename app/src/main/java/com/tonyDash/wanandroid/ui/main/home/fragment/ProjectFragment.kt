@@ -3,10 +3,13 @@ package com.tonyDash.wanandroid.ui.main.home.fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseBinderAdapter
+import com.cjy.baselibrary.autoService.myServiceLoader
 import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.fragment.BaseCategoryListMVFragment
+import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.baselibrary.viewModel.BaseViewModel
+import com.cjy.commonlibrary.autoservice.IWebViewService
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.ui.main.home.adapter.binder.CategoryBinder
 import com.tonyDash.wanandroid.ui.main.home.adapter.binder.ProjectBinder
@@ -44,6 +47,16 @@ class ProjectFragment:BaseCategoryListMVFragment<Category,Article>() {
             this.adapter = articleAdapter
             this.layoutManager = LinearLayoutManager(mActivity)
             articleAdapter.setList(viewModel.articleList.value)
+        }
+        articleAdapter.addChildClickViewIds(R.id.iv_collect)
+        articleAdapter.setOnItemClickListener { _, _, position ->
+            val article = GsonUtil.instance.toJsonString(articleAdapter.data[position])
+            val webservice: IWebViewService? = myServiceLoader.load(IWebViewService::class.java)
+            webservice?.run {
+                this.startWebViewActivity(mActivity, mapOf(IWebViewService.PARAM_ARTICLE to article))
+            }
+        }
+        articleAdapter.setOnItemChildClickListener { adapter, view, position ->
         }
     }
 
