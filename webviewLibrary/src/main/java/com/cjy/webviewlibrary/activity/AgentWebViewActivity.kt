@@ -42,7 +42,8 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
 
     override fun initViews() {
         ivBack.setOnClickListener {
-            ActivityManager.finish(AgentWebViewActivity::class.java)
+            this@AgentWebViewActivity.finish()
+//            ActivityManager.finish(AgentWebViewActivity::class.java)
         }
         ivMore.setOnClickListener {
             ActionFragment.newInstance(article).show(supportFragmentManager)

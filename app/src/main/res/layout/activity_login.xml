@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="account"
-            type="String" />
-        <variable
-            name="password"
-            type="String" />
-    </data>
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -29,10 +18,10 @@
                 android:layout_height="48dp"
                 android:layout_gravity="start"
                 android:layout_marginStart="4dp"
-                app:tint="@color/textColorPrimary"
                 android:background="?actionBarItemBackground"
                 android:padding="12dp"
-                android:src="@drawable/ic_close_black_24dp" />
+                android:src="@drawable/ic_close_black_24dp"
+                app:tint="@color/textColorPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -81,7 +70,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:text="@{account}"
                     android:textColor="@color/textColorPrimary"
                     android:textColorHighlight="@color/textColorPrimary"
                     android:textColorHint="@color/textColorThird"
@@ -108,7 +96,6 @@
                     android:inputType="textPassword"
                     android:maxLength="20"
                     android:maxLines="1"
-                    android:text="@{password}"
                     android:singleLine="true"
                     android:textColor="@color/textColorPrimary"
                     android:textColorHighlight="@color/textColorPrimary"
@@ -144,4 +131,3 @@
         </LinearLayout>
 
     </LinearLayout>
-</layout>

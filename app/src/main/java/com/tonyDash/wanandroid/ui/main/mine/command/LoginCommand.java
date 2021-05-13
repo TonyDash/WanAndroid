@@ -9,7 +9,7 @@ import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface;
 import com.cjy.webviewlibrary.command.ICommand;
 import com.google.auto.service.AutoService;
 import com.tonyDash.wanandroid.store.UserInfoStore;
-import com.tonyDash.wanandroid.ui.main.mine.LoginActivity;
+import com.tonyDash.wanandroid.ui.main.mine.activity.LoginActivity;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

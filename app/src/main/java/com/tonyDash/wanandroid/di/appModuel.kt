@@ -5,6 +5,8 @@ import com.tonyDash.wanandroid.ui.main.home.api.HomeApi
 import com.tonyDash.wanandroid.ui.main.home.repository.*
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.*
 import com.tonyDash.wanandroid.ui.main.mine.api.UserApi
+import com.tonyDash.wanandroid.ui.main.mine.repository.LoginRepository
+import com.tonyDash.wanandroid.ui.main.mine.viewModel.LoginViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -14,6 +16,7 @@ val viewModelModule = module {
     viewModel { SquareViewModel(get()) }
     viewModel { ProjectViewModel(get()) }
     viewModel { WeChatViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
 }
 
 val reposModule = module {
@@ -23,6 +26,7 @@ val reposModule = module {
     factory { SquareRepository(get()) }
     factory { ProjectRepository(get()) }
     factory { WeChatRepository(get()) }
+    factory { LoginRepository(get()) }
 }
 
 val remoteModule = module {

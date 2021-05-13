@@ -21,4 +21,8 @@
     <string name="wanandroid">WANANDROID</string>
     <string name="register">注册</string>
     <string name="confirm_password">确认密码</string>
+    <string name="account_can_not_be_empty">账号不能为空</string>
+    <string name="password_can_not_be_empty">密码不能为空</string>
+    <string name="account_length_over_three">账号不能少于3位</string>
+    <string name="password_length_over_six">密码不能少于6位</string>
 </resources>

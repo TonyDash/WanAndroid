@@ -1,6 +1,7 @@
 package com.cjy.baselibrary.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.cjy.baselibrary.viewModel.BaseViewModel
@@ -25,7 +26,7 @@ abstract class BaseVMActivity : AppCompatActivity(){
                         dismissLoading()
                         stateActionState.message?.apply {
 //                            errorToast(this)
-                            handleError()
+                            handleError(this)
                         }
                     }
                 }
@@ -35,9 +36,9 @@ abstract class BaseVMActivity : AppCompatActivity(){
 
     abstract fun getLayoutId(): Int
 
-    abstract fun initView()
-
     abstract fun getViewModel(): BaseViewModel
+
+    abstract fun initView()
 
     open fun setContentLayout() {
         setContentView(getLayoutId())
@@ -58,7 +59,7 @@ abstract class BaseVMActivity : AppCompatActivity(){
 
     }
 
-    open fun handleError() {
-
+    open fun handleError(errorStr:String) {
+        Toast.makeText(this,errorStr,Toast.LENGTH_SHORT).show()
     }
 }
