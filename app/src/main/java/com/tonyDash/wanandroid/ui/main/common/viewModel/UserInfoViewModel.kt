@@ -1,7 +1,7 @@
-package com.tonyDash.wanandroid.room.viewModel
+package com.tonyDash.wanandroid.ui.main.common.viewModel
 
 import com.cjy.baselibrary.viewModel.BaseViewModel
-import com.tonyDash.wanandroid.room.repository.UserInfoRepository
+import com.tonyDash.wanandroid.ui.main.common.repository.UserInfoRepository
 
 class UserInfoViewModel(private val repository: UserInfoRepository):BaseViewModel() {
 

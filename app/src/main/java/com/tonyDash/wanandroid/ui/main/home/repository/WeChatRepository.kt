@@ -1,6 +1,6 @@
 package com.tonyDash.wanandroid.ui.main.home.repository
 
-import com.tonyDash.wanandroid.ui.main.home.api.HomeApi
+import com.tonyDash.wanandroid.network.api.HomeApi
 
 class WeChatRepository(private val api: HomeApi) {
     suspend fun getWeChatCategories() = api.getWechatCategories().apiData()

@@ -2,9 +2,6 @@ package com.tonyDash.wanandroid.command;
 
 import android.content.Intent;
 import android.os.RemoteException;
-import android.util.Log;
-
-import androidx.lifecycle.LiveData;
 
 import com.cjy.baselibrary.AppContext;
 import com.cjy.baselibrary.utils.GsonUtil;
@@ -12,8 +9,8 @@ import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface;
 import com.cjy.webviewlibrary.command.ICommand;
 import com.google.auto.service.AutoService;
 import com.tonyDash.wanandroid.room.RoomKt;
-import com.tonyDash.wanandroid.room.repository.UserInfoRepository;
-import com.tonyDash.wanandroid.room.viewModel.UserInfoViewModel;
+import com.tonyDash.wanandroid.ui.main.common.repository.UserInfoRepository;
+import com.tonyDash.wanandroid.ui.main.common.viewModel.UserInfoViewModel;
 import com.tonyDash.wanandroid.store.UserInfoStore;
 import com.tonyDash.wanandroid.ui.main.mine.activity.LoginActivity;
 

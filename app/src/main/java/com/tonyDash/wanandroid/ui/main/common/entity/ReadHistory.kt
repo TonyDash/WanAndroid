@@ -1,4 +1,4 @@
-package com.tonyDash.wanandroid.room.entity
+package com.tonyDash.wanandroid.ui.main.common.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation

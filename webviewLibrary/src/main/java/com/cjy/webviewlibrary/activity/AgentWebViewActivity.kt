@@ -20,6 +20,9 @@ import com.cjy.webviewlibrary.ext.htmlToSpanned
 import com.cjy.webviewlibrary.model.Article
 import com.cjy.webviewlibrary.model.CallBackResult
 import com.cjy.webviewlibrary.model.JsParam
+import com.cjy.webviewlibrary.utils.Constants
+import com.cjy.webviewlibrary.utils.Constants.Companion.COMMAND_ARTICLE_ID
+import com.cjy.webviewlibrary.utils.Constants.Companion.COMMAND_ARTICLE_IS_COLLECT
 import com.cjy.webviewlibrary.utils.whiteHostList
 import com.cjy.webviewlibrary.webProcess.CommandDispatcher
 import com.cjy.webviewlibrary.webProcess.callback.BaseCommandCallBack
@@ -43,7 +46,6 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
     override fun initViews() {
         ivBack.setOnClickListener {
             this@AgentWebViewActivity.finish()
-//            ActivityManager.finish(AgentWebViewActivity::class.java)
         }
         ivMore.setOnClickListener {
             ActionFragment.newInstance(article).show(supportFragmentManager)
@@ -179,13 +181,19 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
     }
 
     fun checkLogin() {
-        takeNativeAction("login","")
+        takeNativeAction(Constants.COMMAND_NAME_LOGIN,"")
     }
 
-    fun changeCollect() {
-
+    private fun changeCollect() {
+        val jsonParams = JsonObject()
+        jsonParams.addProperty(COMMAND_ARTICLE_ID,article.id)
+        jsonParams.addProperty(COMMAND_ARTICLE_IS_COLLECT,article.collect)
+        takeNativeAction(Constants.COMMAND_NAME_COLLECT,jsonParams.toString())
     }
 
+    /**
+     * 执行APP内自身的进程间交互通信
+     */
     private fun takeNativeAction(commandName:String,jsonParams:String) {
         CommandDispatcher.instance.executeCommand(
             commandName,
@@ -194,6 +202,9 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
         )
     }
 
+    /**
+     * 执行与JS间的进程间交互通信
+     */
     private fun takeJsAction(jsParam: String) {
         (jsParam.isNotEmpty()).yes {
             val jsParamObject = GsonUtil.instance.parse(jsParam, JsParam::class.java)

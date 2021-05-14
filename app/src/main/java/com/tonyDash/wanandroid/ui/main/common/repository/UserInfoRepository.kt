@@ -1,6 +1,5 @@
-package com.tonyDash.wanandroid.room.repository
+package com.tonyDash.wanandroid.ui.main.common.repository
 
-import android.util.Log
 import com.tonyDash.wanandroid.room.dao.UserDao
 import com.tonyDash.wanandroid.ui.main.mine.model.UserInfo
 

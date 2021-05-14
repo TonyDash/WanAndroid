@@ -1,4 +1,4 @@
-package com.tonyDash.wanandroid.room.repository
+package com.tonyDash.wanandroid.ui.main.common.repository
 
 import com.tonyDash.wanandroid.room.dao.ReadHistoryDao
 import com.tonyDash.wanandroid.ui.main.home.model.Article

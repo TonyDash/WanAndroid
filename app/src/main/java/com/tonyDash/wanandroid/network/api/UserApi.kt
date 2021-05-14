@@ -1,4 +1,4 @@
-package com.tonyDash.wanandroid.ui.main.mine.api
+package com.tonyDash.wanandroid.network.api
 
 import com.cjy.networklibrary.result.ApiResult
 import com.tonyDash.wanandroid.ui.main.mine.model.UserInfo

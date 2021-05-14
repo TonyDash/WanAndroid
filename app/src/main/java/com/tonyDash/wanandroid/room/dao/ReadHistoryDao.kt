@@ -1,7 +1,7 @@
 package com.tonyDash.wanandroid.room.dao
 
 import androidx.room.*
-import com.tonyDash.wanandroid.room.entity.ReadHistory
+import com.tonyDash.wanandroid.ui.main.common.entity.ReadHistory
 import com.tonyDash.wanandroid.ui.main.home.model.Article
 import com.tonyDash.wanandroid.ui.main.home.model.Tag
 

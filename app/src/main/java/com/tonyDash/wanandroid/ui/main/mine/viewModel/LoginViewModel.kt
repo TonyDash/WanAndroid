@@ -2,7 +2,7 @@ package com.tonyDash.wanandroid.ui.main.mine.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import com.cjy.baselibrary.viewModel.BaseViewModel
-import com.tonyDash.wanandroid.room.repository.UserInfoRepository
+import com.tonyDash.wanandroid.ui.main.common.repository.UserInfoRepository
 import com.tonyDash.wanandroid.store.UserInfoStore
 import com.tonyDash.wanandroid.ui.main.mine.repository.LoginRepository
 
