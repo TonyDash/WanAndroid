@@ -1,13 +1,19 @@
-package com.tonyDash.wanandroid.ui.main.mine.command;
+package com.tonyDash.wanandroid.command;
 
 import android.content.Intent;
 import android.os.RemoteException;
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
 
 import com.cjy.baselibrary.AppContext;
 import com.cjy.baselibrary.utils.GsonUtil;
 import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface;
 import com.cjy.webviewlibrary.command.ICommand;
 import com.google.auto.service.AutoService;
+import com.tonyDash.wanandroid.room.RoomKt;
+import com.tonyDash.wanandroid.room.repository.UserInfoRepository;
+import com.tonyDash.wanandroid.room.viewModel.UserInfoViewModel;
 import com.tonyDash.wanandroid.store.UserInfoStore;
 import com.tonyDash.wanandroid.ui.main.mine.activity.LoginActivity;
 
@@ -27,7 +33,9 @@ public class LoginCommand implements ICommand {
     @Override
     public void execute(@Nullable Map<?, ?> params, @NotNull I2WebViewProcessAidlInterface callback) {
         try {
-            boolean isLogin = UserInfoStore.INSTANCE.isLogin();
+            UserInfoRepository userInfoRepository = new UserInfoRepository(RoomKt.getUserDao());
+            UserInfoViewModel userInfoViewModel = new UserInfoViewModel(userInfoRepository);
+            boolean isLogin = userInfoViewModel.isLogin();
             if (isLogin) {
                 String userInfoStr = GsonUtil.Companion.getInstance().toJsonString(UserInfoStore.INSTANCE.getUserInfo());
                 callback.onResult("login", true, userInfoStr);

@@ -7,6 +7,8 @@ import java.lang.Exception
 //类型别名
 typealias LaunchBlock = suspend CoroutineScope.() -> Unit
 
+typealias Block<T> = suspend () -> T
+
 typealias EmitBlock<T> = suspend LiveDataScope<T>.() -> T
 
 typealias AsyncBlock<T> = suspend () -> T
@@ -53,6 +55,24 @@ open class BaseViewModel : ViewModel() {
                 else -> mStateLiveData.value = ErrorState(e.message)
             }
         }
+    }
+
+    fun<T> emitNormal(cancel: Cancel? = null, block: Block<T>): T? {
+        var result:T? = null
+        viewModelScope.launch {
+            try {
+                mStateLiveData.value = LoadState
+                result = block()
+            } catch (e: Exception) {
+                when (e) {
+                    is CancellationException -> cancel?.invoke(e)
+                    else -> mStateLiveData.value = ErrorState(e.message)
+                }
+            } finally {
+                mStateLiveData.value = SuccessState
+            }
+        }
+        return result
     }
 
     /***

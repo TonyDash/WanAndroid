@@ -5,6 +5,7 @@ import com.tonyDash.wanandroid.room.historyDao
 import com.tonyDash.wanandroid.room.repository.HistoryRepository
 import com.tonyDash.wanandroid.room.repository.UserInfoRepository
 import com.tonyDash.wanandroid.room.userDao
+import com.tonyDash.wanandroid.room.viewModel.UserInfoViewModel
 import com.tonyDash.wanandroid.ui.main.home.api.HomeApi
 import com.tonyDash.wanandroid.ui.main.home.repository.*
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.*
@@ -21,6 +22,7 @@ val viewModelModule = module {
     viewModel { ProjectViewModel(get()) }
     viewModel { WeChatViewModel(get()) }
     viewModel { LoginViewModel(get(),get()) }
+    viewModel { UserInfoViewModel(get()) }
 }
 
 val reposModule = module {

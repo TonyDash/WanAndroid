@@ -27,8 +27,10 @@ object UserInfoStore {
     }
 
     fun setUserInfo(userInfo: UserInfo) =
-        putSpValue(SP_USER_INFO, AppContext, KEY_USER_INFO,
-            GsonUtil.instance.toJsonString(userInfo))
+        putSpValue(
+            SP_USER_INFO, AppContext, KEY_USER_INFO,
+            GsonUtil.instance.toJsonString(userInfo)
+        )
 
     fun clearUserInfo() {
         clearSpValue(SP_USER_INFO, AppContext)
