@@ -1,8 +1,8 @@
 package com.cjy.webviewlibrary.mainProcess
 import com.cjy.baselibrary.utils.GsonUtil
-import com.cjy.webviewlibrary.I2MainProcessAidlInterface
-import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface
-import com.cjy.webviewlibrary.command.ICommand
+import com.cjy.commonlibrary.I2MainProcessAidlInterface
+import com.cjy.commonlibrary.I2WebViewProcessAidlInterface
+import com.cjy.commonlibrary.command.ICommand
 import java.util.*
 import kotlin.collections.HashMap
 

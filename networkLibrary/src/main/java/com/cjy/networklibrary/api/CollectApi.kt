@@ -1,4 +1,4 @@
-package com.tonyDash.wanandroid.network.api
+package com.cjy.networklibrary.api
 
 import com.cjy.networklibrary.result.ApiResult
 import retrofit2.http.POST

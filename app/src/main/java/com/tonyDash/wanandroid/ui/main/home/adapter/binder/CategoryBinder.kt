@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.chad.library.adapter.base.binder.QuickDataBindingItemBinder
 import com.tonyDash.wanandroid.databinding.ItemCategorySubBinding
-import com.tonyDash.wanandroid.ui.main.home.model.Category
+import com.cjy.networklibrary.entity.Category
 
 class CategoryBinder:QuickDataBindingItemBinder<Category,ItemCategorySubBinding>() {
 

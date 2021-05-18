@@ -7,8 +7,8 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
 import com.cjy.baselibrary.AppContext
-import com.cjy.webviewlibrary.I2MainProcessAidlInterface
-import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface
+import com.cjy.commonlibrary.I2MainProcessAidlInterface
+import com.cjy.commonlibrary.I2WebViewProcessAidlInterface
 import com.cjy.webviewlibrary.activity.AgentWebViewActivity
 import com.cjy.webviewlibrary.mainProcess.MainProcessCommandService
 import com.cjy.webviewlibrary.model.CallBackResult
@@ -16,7 +16,7 @@ import com.cjy.webviewlibrary.webProcess.callback.BaseCommandCallBack
 
 class CommandDispatcher private constructor() : ServiceConnection {
 
-    private var i2MainProcessAidlInterface:I2MainProcessAidlInterface? = null
+    private var i2MainProcessAidlInterface: I2MainProcessAidlInterface? = null
 
     companion object{
         val instance = Holder.holder

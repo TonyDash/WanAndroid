@@ -1,8 +1,8 @@
 package com.tonyDash.wanandroid.ui.main.common.repository
 
-import com.tonyDash.wanandroid.room.dao.ReadHistoryDao
-import com.tonyDash.wanandroid.ui.main.home.model.Article
-import com.tonyDash.wanandroid.ui.main.home.model.Tag
+import com.cjy.networklibrary.entity.Article
+import com.cjy.networklibrary.entity.Tag
+import com.cjy.networklibrary.room.dao.ReadHistoryDao
 
 class HistoryRepository(private val dao: ReadHistoryDao) {
 

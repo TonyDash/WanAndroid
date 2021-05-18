@@ -1,4 +1,4 @@
-package com.tonyDash.wanandroid.room.converter
+package com.cjy.networklibrary.room.converters
 
 import androidx.room.TypeConverter
 import com.cjy.baselibrary.utils.GsonUtil

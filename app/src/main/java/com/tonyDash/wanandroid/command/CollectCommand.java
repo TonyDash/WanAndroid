@@ -1,7 +1,7 @@
 package com.tonyDash.wanandroid.command;
 
-import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface;
-import com.cjy.webviewlibrary.command.ICommand;
+import com.cjy.commonlibrary.I2WebViewProcessAidlInterface;
+import com.cjy.commonlibrary.command.ICommand;
 import com.google.auto.service.AutoService;
 
 import org.jetbrains.annotations.NotNull;

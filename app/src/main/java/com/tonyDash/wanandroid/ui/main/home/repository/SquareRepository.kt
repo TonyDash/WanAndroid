@@ -1,6 +1,6 @@
 package com.tonyDash.wanandroid.ui.main.home.repository
 
-import com.tonyDash.wanandroid.network.api.HomeApi
+import com.cjy.networklibrary.api.HomeApi
 
 class SquareRepository(private val api: HomeApi) {
     suspend fun getUserArticleList(page: Int) =

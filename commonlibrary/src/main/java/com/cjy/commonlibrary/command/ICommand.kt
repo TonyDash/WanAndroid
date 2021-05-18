@@ -1,6 +1,6 @@
-package com.cjy.webviewlibrary.command
+package com.cjy.commonlibrary.command
 
-import com.cjy.webviewlibrary.I2WebViewProcessAidlInterface
+import com.cjy.commonlibrary.I2WebViewProcessAidlInterface
 
 interface ICommand {
     fun name():String

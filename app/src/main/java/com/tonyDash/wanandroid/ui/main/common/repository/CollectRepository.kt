@@ -1,6 +1,7 @@
 package com.tonyDash.wanandroid.ui.main.common.repository
 
-import com.tonyDash.wanandroid.network.api.CollectApi
+import com.cjy.networklibrary.api.CollectApi
+
 
 class CollectRepository(private val api: CollectApi) {
 

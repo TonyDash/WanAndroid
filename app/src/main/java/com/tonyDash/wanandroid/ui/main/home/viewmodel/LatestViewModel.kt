@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.viewModel.BaseViewModel
-import com.tonyDash.wanandroid.ui.main.home.model.Article
+import com.cjy.networklibrary.entity.Article
 import com.tonyDash.wanandroid.ui.main.home.repository.LatestRepository
 
 class LatestViewModel(private val repository: LatestRepository):BaseViewModel() {

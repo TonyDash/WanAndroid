@@ -4,7 +4,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.databinding.ItemArticleBinding
-import com.tonyDash.wanandroid.ui.main.home.model.Article
+import com.cjy.networklibrary.entity.Article
 
 /**
  * 继承最简单的BaseQuickAdapter

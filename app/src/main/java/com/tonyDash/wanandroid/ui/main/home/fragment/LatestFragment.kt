@@ -12,7 +12,7 @@ import com.cjy.commonlibrary.autoservice.IWebViewService
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.ui.main.home.adapter.LatestAdapter
 import com.tonyDash.wanandroid.ui.main.home.adapter.binder.LatestBinder
-import com.tonyDash.wanandroid.ui.main.home.model.Article
+import com.cjy.networklibrary.entity.Article
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.LatestViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

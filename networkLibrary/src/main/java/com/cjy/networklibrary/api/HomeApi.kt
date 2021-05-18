@@ -1,9 +1,9 @@
-package com.tonyDash.wanandroid.network.api
+package com.cjy.networklibrary.api
 
+import com.cjy.networklibrary.entity.Article
+import com.cjy.networklibrary.entity.Category
 import com.cjy.networklibrary.result.ApiResult
 import com.cjy.networklibrary.result.Pagination
-import com.tonyDash.wanandroid.ui.main.home.model.Article
-import com.tonyDash.wanandroid.ui.main.home.model.Category
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -1,9 +1,7 @@
-package com.tonyDash.wanandroid.ui.main.common.entity
+package com.cjy.networklibrary.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.tonyDash.wanandroid.ui.main.home.model.Article
-import com.tonyDash.wanandroid.ui.main.home.model.Tag
 
 data class ReadHistory(
     @Embedded

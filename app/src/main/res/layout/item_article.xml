@@ -9,7 +9,7 @@
 
         <variable
             name="itemArticle"
-            type="com.tonyDash.wanandroid.ui.main.home.model.Article" />
+            type="com.cjy.networklibrary.entity.Article" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -13,8 +13,8 @@ import com.cjy.commonlibrary.autoservice.IWebViewService
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.ui.main.home.adapter.binder.CategoryBinder
 import com.tonyDash.wanandroid.ui.main.home.adapter.binder.ProjectBinder
-import com.tonyDash.wanandroid.ui.main.home.model.Article
-import com.tonyDash.wanandroid.ui.main.home.model.Category
+import com.cjy.networklibrary.entity.Article
+import com.cjy.networklibrary.entity.Category
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.WeChatViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

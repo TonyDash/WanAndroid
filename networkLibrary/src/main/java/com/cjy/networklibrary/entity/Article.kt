@@ -1,4 +1,4 @@
-package com.tonyDash.wanandroid.ui.main.home.model
+package com.cjy.networklibrary.entity
 
 import android.os.Parcelable
 import androidx.room.Entity

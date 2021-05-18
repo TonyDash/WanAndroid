@@ -52,14 +52,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     implementation project(path: ':commonlibrary')
-    implementation project(path: ':networkLibrary')
     implementation project(path: ':LaunchStarter')
-    implementation project(path:':webviewLibrary')
-
-    //协程 + room
-    implementation "androidx.room:room-runtime:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
-    implementation "androidx.room:room-ktx:2.2.5"
+    implementation project(path: ':webviewLibrary')
 
     //组件化autoService
     implementation rootProject.ext.googleAutoServiceDependency

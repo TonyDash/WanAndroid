@@ -1,7 +1,7 @@
 package com.tonyDash.wanandroid.ui.main.common.repository
 
-import com.tonyDash.wanandroid.room.dao.UserDao
-import com.tonyDash.wanandroid.ui.main.mine.model.UserInfo
+import com.cjy.networklibrary.entity.UserInfo
+import com.cjy.networklibrary.room.dao.UserDao
 
 class UserInfoRepository(private val dao: UserDao) {
 

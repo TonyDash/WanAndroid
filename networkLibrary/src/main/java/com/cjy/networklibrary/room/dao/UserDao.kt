@@ -1,10 +1,10 @@
-package com.tonyDash.wanandroid.room.dao
+package com.cjy.networklibrary.room.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.tonyDash.wanandroid.ui.main.mine.model.UserInfo
+import com.cjy.networklibrary.entity.UserInfo
 
 @Dao
 interface UserDao {

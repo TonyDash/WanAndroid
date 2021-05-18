@@ -1,9 +1,9 @@
-package com.tonyDash.wanandroid.ui.main.mine.model
+package com.cjy.networklibrary.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.tonyDash.wanandroid.room.converter.UserConverters
+import com.cjy.networklibrary.room.converters.UserConverters
 
 @Entity
 @TypeConverters(UserConverters::class)

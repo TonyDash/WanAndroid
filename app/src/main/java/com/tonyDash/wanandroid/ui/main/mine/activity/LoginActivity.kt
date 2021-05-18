@@ -7,10 +7,8 @@ import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.viewModel.BaseViewModel
 import com.tonyDash.wanandroid.R
-import com.tonyDash.wanandroid.room.dao.UserDao
 import com.tonyDash.wanandroid.ui.main.mine.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseVMActivity() {

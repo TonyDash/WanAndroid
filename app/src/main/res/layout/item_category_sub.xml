@@ -5,7 +5,7 @@
     <data>
         <variable
             name="category"
-            type="com.tonyDash.wanandroid.ui.main.home.model.Category" />
+            type="com.cjy.networklibrary.entity.Category" />
     </data>
 
     <CheckedTextView

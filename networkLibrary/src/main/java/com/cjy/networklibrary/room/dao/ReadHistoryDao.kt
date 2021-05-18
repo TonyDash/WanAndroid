@@ -1,9 +1,9 @@
-package com.tonyDash.wanandroid.room.dao
+package com.cjy.networklibrary.room.dao
 
 import androidx.room.*
-import com.tonyDash.wanandroid.ui.main.common.entity.ReadHistory
-import com.tonyDash.wanandroid.ui.main.home.model.Article
-import com.tonyDash.wanandroid.ui.main.home.model.Tag
+import com.cjy.networklibrary.entity.Article
+import com.cjy.networklibrary.entity.ReadHistory
+import com.cjy.networklibrary.entity.Tag
 
 @Dao
 interface ReadHistoryDao {

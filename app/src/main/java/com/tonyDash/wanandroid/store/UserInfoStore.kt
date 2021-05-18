@@ -2,7 +2,7 @@ package com.tonyDash.wanandroid.store
 
 import com.cjy.baselibrary.AppContext
 import com.cjy.baselibrary.utils.GsonUtil
-import com.tonyDash.wanandroid.ui.main.mine.model.UserInfo
+import com.cjy.networklibrary.entity.UserInfo
 import com.tonyDash.wanandroid.ui.main.mine.utils.clearSpValue
 import com.tonyDash.wanandroid.ui.main.mine.utils.getSpValue
 import com.tonyDash.wanandroid.ui.main.mine.utils.putSpValue

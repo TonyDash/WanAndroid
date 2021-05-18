@@ -16,8 +16,8 @@ import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
 import com.tonyDash.wanandroid.GlideApp
 import com.tonyDash.wanandroid.R
-import com.tonyDash.wanandroid.ui.main.home.model.Article
-import com.tonyDash.wanandroid.ui.main.home.model.Tag
+import com.cjy.networklibrary.entity.Article
+import com.cjy.networklibrary.entity.Tag
 
 //DataBinding自定义属性
 @BindingAdapter("url")

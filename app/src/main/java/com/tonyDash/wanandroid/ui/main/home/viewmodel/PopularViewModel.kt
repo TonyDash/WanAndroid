@@ -7,7 +7,7 @@ import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.viewModel.BaseViewModel
 import com.cjy.networklibrary.result.ApiResult
 import com.cjy.networklibrary.result.Pagination
-import com.tonyDash.wanandroid.ui.main.home.model.Article
+import com.cjy.networklibrary.entity.Article
 import com.tonyDash.wanandroid.ui.main.home.repository.PopularRepository
 
 class PopularViewModel(private val repository: PopularRepository) : BaseViewModel() {
