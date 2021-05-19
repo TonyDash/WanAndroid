@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.tonyDash.wanandroid.ui.main.mine.utils
+package com.cjy.commonlibrary.utils
 
 import android.content.Context
 

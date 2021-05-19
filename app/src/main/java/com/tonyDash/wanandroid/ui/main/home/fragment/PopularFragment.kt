@@ -7,10 +7,13 @@ import com.cjy.baselibrary.fragment.BaseListMVFragment
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.baselibrary.viewModel.BaseViewModel
 import com.cjy.commonlibrary.autoservice.IWebViewService
+import com.cjy.commonlibrary.eventBus.LiveEventBus
+import com.cjy.commonlibrary.utils.Constants
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.ui.main.home.adapter.PopularAdapter
 import com.cjy.networklibrary.entity.Article
 import com.tonyDash.wanandroid.ui.main.home.viewmodel.PopularViewModel
+import com.tonyDash.wanandroid.ui.main.home.viewmodel.PopularViewModel.Companion.INITIAL_PAGE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PopularFragment : BaseListMVFragment<Article>() {
@@ -43,6 +46,9 @@ class PopularFragment : BaseListMVFragment<Article>() {
     override fun initData() {
         viewModel.articleList.observe(this, mListObserver)
         initViewModelAction()
+        LiveEventBus.with<Pair<Int,Boolean>>(Constants.LIVE_EVENT_CHANGE_COLLECT).observe(viewLifecycleOwner,{
+            viewModel.updateItemCollectState(it)
+        })
     }
 
     override fun getListData() {
@@ -50,6 +56,7 @@ class PopularFragment : BaseListMVFragment<Article>() {
     }
 
     override fun refreshSuccess() {
+        viewModel.page = INITIAL_PAGE
         mAdapter.setList(viewModel.articleList.value)
     }
 

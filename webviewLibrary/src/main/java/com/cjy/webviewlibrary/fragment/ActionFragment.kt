@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService.Companion.PARAM_ARTICLE
+import com.cjy.networklibrary.entity.Article
 import com.cjy.webviewlibrary.R
 import com.cjy.webviewlibrary.activity.AgentWebViewActivity
 import com.cjy.webviewlibrary.ext.copyTextIntoClipboard
 import com.cjy.webviewlibrary.ext.openInExplorer
 import com.cjy.webviewlibrary.ext.showToast
-import com.cjy.webviewlibrary.model.Article
 import com.cjy.webviewlibrary.utils.share
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -62,7 +62,7 @@ class ActionFragment:BottomSheetDialogFragment() {
 //                } else {
 //                    view.postDelayed({ dismiss() }, 300)
 //                }
-                detailActivity.checkLogin()
+                detailActivity.changeCollect()
                 behavior?.state = BottomSheetBehavior.STATE_HIDDEN
             }
             llShare.setOnClickListener {

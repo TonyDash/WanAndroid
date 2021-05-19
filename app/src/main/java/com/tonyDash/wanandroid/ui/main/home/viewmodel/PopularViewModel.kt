@@ -1,12 +1,10 @@
 package com.tonyDash.wanandroid.ui.main.home.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.cjy.baselibrary.baseExt.no
 import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.viewModel.BaseViewModel
-import com.cjy.networklibrary.result.ApiResult
-import com.cjy.networklibrary.result.Pagination
 import com.cjy.networklibrary.entity.Article
 import com.tonyDash.wanandroid.ui.main.home.repository.PopularRepository
 
@@ -41,7 +39,7 @@ class PopularViewModel(private val repository: PopularRepository) : BaseViewMode
         }
         val pagination = paginationDeferred.await()
         page = pagination.curPage
-        articleList.value = mutableListOf<Article>().apply {
+         articleList.value = mutableListOf<Article>().apply {
             addAll(topArticleList)
             addAll(pagination.datas)
         }
@@ -53,5 +51,15 @@ class PopularViewModel(private val repository: PopularRepository) : BaseViewMode
         val currentList = articleList.value ?: mutableListOf()
         currentList.addAll(pagination.datas)
         articleList.value = currentList
+    }
+
+    /**
+     * 更新Item的收藏状态
+     */
+    fun updateItemCollectState(target: Pair<Int, Boolean>) {
+        val list = articleList.value
+        val item = list?.find { it.id == target.first } ?: return
+        item.collect = target.second
+        articleList.value = list
     }
 }

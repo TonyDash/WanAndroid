@@ -1,31 +1,32 @@
 package com.cjy.webviewlibrary.activity
 
 import android.net.Uri
-import android.text.TextUtils
 import android.util.Log
 import android.view.KeyEvent
 import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.cjy.baselibrary.activity.BaseActivity
 import com.cjy.baselibrary.baseExt.otherwise
 import com.cjy.baselibrary.baseExt.yes
-import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService.Companion.PARAM_ARTICLE
+import com.cjy.commonlibrary.store.UserInfoStore
+import com.cjy.commonlibrary.utils.Constants.Companion.DATA_ARTICLE_ID
+import com.cjy.commonlibrary.utils.Constants.Companion.COMMAND_NAME_CHANGE_COLLECT
+import com.cjy.commonlibrary.utils.Constants.Companion.COMMAND_NAME_LOGIN
+import com.cjy.commonlibrary.utils.Constants.Companion.DATA_IS_COLLECT
+import com.cjy.networklibrary.entity.Article
 import com.cjy.webviewlibrary.fragment.ActionFragment
 import com.cjy.webviewlibrary.R
 import com.cjy.webviewlibrary.ext.htmlToSpanned
-import com.cjy.webviewlibrary.model.Article
-import com.cjy.webviewlibrary.model.CallBackResult
 import com.cjy.webviewlibrary.model.JsParam
-import com.cjy.webviewlibrary.utils.Constants
-import com.cjy.webviewlibrary.utils.Constants.Companion.COMMAND_ARTICLE_ID
-import com.cjy.webviewlibrary.utils.Constants.Companion.COMMAND_ARTICLE_IS_COLLECT
 import com.cjy.webviewlibrary.utils.whiteHostList
+import com.cjy.webviewlibrary.viewModel.CollectViewModel
+import com.cjy.webviewlibrary.viewModel.UserInfoViewModel
 import com.cjy.webviewlibrary.webProcess.CommandDispatcher
-import com.cjy.webviewlibrary.webProcess.callback.BaseCommandCallBack
 import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
 import com.cjy.webviewlibrary.webProcess.webchromeclient.MyWebChromeClient
 import com.cjy.webviewlibrary.webProcess.webviewclient.MyWebViewClient
@@ -37,6 +38,9 @@ import kotlinx.android.synthetic.main.activity_agent_webview.*
 
 class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
 
+    private lateinit var userViewModel:UserInfoViewModel
+    private lateinit var collectViewModel:CollectViewModel
+
     private lateinit var article: Article
 
     private var agentWeb: AgentWeb? = null
@@ -44,12 +48,21 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
     override fun getLayoutId(): Int = R.layout.activity_agent_webview
 
     override fun initViews() {
+        userViewModel = ViewModelProvider(this).get(UserInfoViewModel::class.java)
+        collectViewModel = ViewModelProvider(this).get(CollectViewModel::class.java)
         ivBack.setOnClickListener {
             this@AgentWebViewActivity.finish()
         }
         ivMore.setOnClickListener {
             ActionFragment.newInstance(article).show(supportFragmentManager)
         }
+        collectViewModel.isCollect.observe(this,{
+            article.collect = it
+            val jsonParams = JsonObject()
+            jsonParams.addProperty(DATA_ARTICLE_ID,article.id)
+            jsonParams.addProperty(DATA_IS_COLLECT,it)
+            takeNativeAction(COMMAND_NAME_CHANGE_COLLECT,jsonParams.toString())
+        })
     }
 
     override fun initData() {
@@ -180,15 +193,17 @@ class AgentWebViewActivity : BaseActivity(), WebViewCallBack {
         return !whiteHostList().contains(request.url?.host)
     }
 
-    fun checkLogin() {
-        takeNativeAction(Constants.COMMAND_NAME_LOGIN,"")
-    }
-
-    private fun changeCollect() {
-        val jsonParams = JsonObject()
-        jsonParams.addProperty(COMMAND_ARTICLE_ID,article.id)
-        jsonParams.addProperty(COMMAND_ARTICLE_IS_COLLECT,article.collect)
-        takeNativeAction(Constants.COMMAND_NAME_COLLECT,jsonParams.toString())
+    fun changeCollect() {
+        val isLogin = UserInfoStore.instance.isLogin()
+            isLogin.yes {
+            article.collect.yes {
+                collectViewModel.unCollect(article.id)
+            }.otherwise {
+                collectViewModel.collect(article.id)
+            }
+        }.otherwise {
+            takeNativeAction(COMMAND_NAME_LOGIN,"")
+        }
     }
 
     /**

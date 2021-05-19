@@ -1,9 +1,6 @@
 package com.cjy.networklibrary.room.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.cjy.networklibrary.entity.UserInfo
 
 @Dao
@@ -18,4 +15,6 @@ interface UserDao {
     @Delete
     suspend fun deleteAll(vararg user: UserInfo)
 
+    @Update
+    suspend fun updateUser(user:UserInfo)
 }

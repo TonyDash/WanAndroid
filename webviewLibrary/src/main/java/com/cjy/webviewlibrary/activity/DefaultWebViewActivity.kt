@@ -10,12 +10,11 @@ import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.utils.ActivityManager
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.autoservice.IWebViewService
+import com.cjy.networklibrary.entity.Article
 import com.cjy.webviewlibrary.R
 import com.cjy.webviewlibrary.ext.htmlToSpanned
-import com.cjy.webviewlibrary.model.Article
 import com.cjy.webviewlibrary.utils.whiteHostList
 import com.cjy.webviewlibrary.webProcess.callback.WebViewCallBack
-import com.cjy.webviewlibrary.webProcess.setting.WebViewDefaultSettings
 import com.cjy.webviewlibrary.webProcess.webchromeclient.MyWebChromeClient
 import com.cjy.webviewlibrary.webProcess.webviewclient.MyWebViewClient
 import kotlinx.android.synthetic.main.activity_default_webview.*

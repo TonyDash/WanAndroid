@@ -57,24 +57,6 @@ open class BaseViewModel : ViewModel() {
         }
     }
 
-    fun<T> emitNormal(cancel: Cancel? = null, block: Block<T>): T? {
-        var result:T? = null
-        viewModelScope.launch {
-            try {
-                mStateLiveData.value = LoadState
-                result = block()
-            } catch (e: Exception) {
-                when (e) {
-                    is CancellationException -> cancel?.invoke(e)
-                    else -> mStateLiveData.value = ErrorState(e.message)
-                }
-            } finally {
-                mStateLiveData.value = SuccessState
-            }
-        }
-        return result
-    }
-
     /***
      * 用于需要多步调用的场景
      * 例如一个界面的数据显示，需要调用多个接口，由于协程是按照顺序执行的，多个接口的顺序调用

@@ -16,6 +16,7 @@ class PopularAdapter : BaseQuickAdapter<Article, BaseDataBindingHolder<ItemArtic
         addChildClickViewIds(R.id.iv_collect)
         dataBinding?.run {
             this.itemArticle = item
+            this.ivCollect.isSelected = item.collect
             this.executePendingBindings()
         }
     }
