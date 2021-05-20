@@ -64,6 +64,31 @@ fun checkArticleDesc(textView: TextView,content:String){
     }
 }
 
+@BindingAdapter("loginVisible")
+fun setViewVisible(textView: TextView,isLogin:Boolean){
+    textView.visibility = isLogin.yes {
+        View.VISIBLE
+    }.otherwise {
+        View.GONE
+    }
+}
+
+@BindingAdapter("textValue")
+fun setTextValue(textView: TextView,strValue:String){
+    textView.text = strValue
+}
+
+@BindingAdapter("textValue")
+fun setTextValue(textView: TextView,intValue:Int){
+    textView.text = intValue.toString()
+}
+
+@BindingAdapter("textValue")
+fun setTextValue(textView: TextView,longValue:Long){
+    textView.text = longValue.toString()
+}
+
+
 ////DataBinding类型转换
 //@BindingConversion
 //fun setReposLanguageBg(reposItemModel: ReposItemModel): Drawable? =

@@ -1,11 +1,14 @@
 package com.tonyDash.wanandroid.ui.main.mine
 
+import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.fragment.BaseDataBindVMFragment
+import com.cjy.baselibrary.fragment.BaseVMFragment
 import com.cjy.baselibrary.viewModel.BaseViewModel
+import com.cjy.commonlibrary.store.UserInfoStore
 import com.tonyDash.wanandroid.R
-import com.tonyDash.wanandroid.databinding.FragmentHomeBinding
+import com.tonyDash.wanandroid.databinding.FragmentMineBinding
 
-class MineFragment:BaseDataBindVMFragment<FragmentHomeBinding>(){
+class MineFragment:BaseDataBindVMFragment<FragmentMineBinding>(){
 
     companion object {
         fun newInstance() = MineFragment()
@@ -21,6 +24,7 @@ class MineFragment:BaseDataBindVMFragment<FragmentHomeBinding>(){
     }
 
     override fun initData() {
-
+        mDataBind.isLogin = UserInfoStore.instance.isLogin()
+        mDataBind.user = UserInfoStore.instance.getUserInfo()
     }
 }

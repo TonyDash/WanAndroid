@@ -2,6 +2,8 @@ package com.cjy.commonlibrary.store
 
 import android.util.Log
 import com.cjy.baselibrary.AppContext
+import com.cjy.baselibrary.baseExt.otherwise
+import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.utils.GsonUtil
 import com.cjy.commonlibrary.utils.Constants.Companion.KEY_IS_LOGIN
 import com.cjy.commonlibrary.utils.Constants.Companion.KEY_USER_DATA
@@ -30,8 +32,12 @@ class UserInfoStore {
     }
 
     fun getUserInfo(): UserInfo {
-        val userStr = getSpValue(SP_USER_INFO, AppContext, KEY_USER_DATA, "")
-        return GsonUtil.instance.parse(userStr, UserInfo::class.java) ?: UserInfo()
+        isLogin().yes {
+            val userStr = getSpValue(SP_USER_INFO, AppContext, KEY_USER_DATA, "")
+            return GsonUtil.instance.parse(userStr, UserInfo::class.java) ?: UserInfo()
+        }.otherwise {
+            return UserInfo()
+        }
     }
 
     private object Holder {

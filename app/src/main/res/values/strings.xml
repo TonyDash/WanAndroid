@@ -25,4 +25,14 @@
     <string name="password_can_not_be_empty">密码不能为空</string>
     <string name="account_length_over_three">账号不能少于3位</string>
     <string name="password_length_over_six">密码不能少于6位</string>
+    <string name="login_register">登录/注册</string>
+    <string name="my_points">我的积分</string>
+    <string name="my_points_rank">积分排行</string>
+    <string name="my_collect">我的收藏</string>
+    <string name="my_share">我的分享</string>
+    <string name="my_view_history">浏览历史</string>
+    <string name="my_system_setting">系统设置</string>
+    <string name="my_about_author">关于作者</string>
+    <string name="my_open_source">开源许可</string>
+
 </resources>
