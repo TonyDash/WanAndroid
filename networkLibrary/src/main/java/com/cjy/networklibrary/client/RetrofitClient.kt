@@ -62,7 +62,6 @@ class RetrofitClient private constructor(){
 
     fun getCookie(){
         val toString = okHttpClient.cookieJar.toString()
-        Log.d("TAG","=========================$toString")
     }
 
     private object Holder {

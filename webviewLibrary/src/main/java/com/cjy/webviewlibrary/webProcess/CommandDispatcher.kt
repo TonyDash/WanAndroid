@@ -37,7 +37,6 @@ class CommandDispatcher private constructor() : ServiceConnection {
     }
 
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-        Log.d("TAG","==========onServiceConnected=========")
         i2MainProcessAidlInterface = I2MainProcessAidlInterface.Stub.asInterface(service)
     }
 
