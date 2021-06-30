@@ -48,7 +48,7 @@ class DefaultWebViewActivity:BaseActivity(), WebViewCallBack {
             article = GsonUtil.instance.parse(articleStr, Article::class.java) ?: Article()
         }
         tvTitle.text = article.title.htmlToSpanned()
-        WvDefault.loadUrl(article.link)
+        WvDefault.loadUrl(article.link?:"")
     }
 
 

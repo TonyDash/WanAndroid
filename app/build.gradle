@@ -54,6 +54,7 @@ dependencies {
     implementation project(path: ':commonlibrary')
     implementation project(path: ':LaunchStarter')
     implementation project(path: ':webviewLibrary')
+    implementation project(':flutter')
 
     //组件化autoService
     implementation rootProject.ext.googleAutoServiceDependency

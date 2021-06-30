@@ -9,17 +9,19 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="$USER_HOME$/softwareInstall/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-8.0.7/android" />
+            <option value="$USER_HOME$/softwareInstall/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-2.0.2/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/LaunchStarter" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselibrary" />
             <option value="$PROJECT_DIR$/commonlibrary" />
+            <option value="$PROJECT_DIR$/flutter_library/.android/Flutter" />
             <option value="$PROJECT_DIR$/networkLibrary" />
             <option value="$PROJECT_DIR$/webviewLibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

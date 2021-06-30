@@ -7,6 +7,8 @@ import com.cjy.baselibrary.viewModel.BaseViewModel
 import com.cjy.commonlibrary.store.UserInfoStore
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.databinding.FragmentMineBinding
+import io.flutter.embedding.android.FlutterActivity
+import kotlinx.android.synthetic.main.fragment_mine.*
 
 class MineFragment:BaseDataBindVMFragment<FragmentMineBinding>(){
 
@@ -20,7 +22,9 @@ class MineFragment:BaseDataBindVMFragment<FragmentMineBinding>(){
     }
 
     override fun initView() {
-
+        llFlutter.setOnClickListener {
+            startActivity(FlutterActivity.createDefaultIntent(mActivity))
+        }
     }
 
     override fun initData() {

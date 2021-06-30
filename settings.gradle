@@ -5,3 +5,8 @@ include ':baselibrary'
 rootProject.name='WanAndroid'
 include ':app'
 include ':LaunchStarter'
+setBinding(new Binding([gradle:this]))
+evaluate(new File(
+        settingsDir.parentFile,
+        'WanAndroid/flutter_library/.android/include_flutter.groovy'
+))
