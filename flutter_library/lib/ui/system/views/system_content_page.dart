@@ -35,9 +35,17 @@ class _SystemContentPageState extends State<SystemContentPage>
               model: Get.find<SystemContentController>(tag: widget.typeId),
               controller: Get.find<SystemContentController>(tag: widget.typeId)
                   .refreshController,
-              onPressed: () {},
-              onRefresh: () async {},
-              onLoading: () async {},
+              onPressed: () {
+                Get.find<SystemContentController>(tag: widget.typeId)
+                    .getArticleBySystem(true);
+              },
+              onRefresh: () async {
+                Get.find<SystemContentController>(tag: widget.typeId).refresh();
+              },
+              onLoading: () async {
+                Get.find<SystemContentController>(tag: widget.typeId)
+                    .getArticleBySystem(false);
+              },
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return HomeListItemUI(
