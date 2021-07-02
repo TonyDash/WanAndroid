@@ -78,7 +78,7 @@ class _SystemMainPageState extends State<SystemMainPage>
           height: 60,
           child: _buildTipItemChildren(system.children),
         ),
-        SystemContentPage(system.id.toString())
+        SystemContentPage( system.children.isNotEmpty?system.children[0].id.toString() : system.id.toString() )
       ],
     );
   }

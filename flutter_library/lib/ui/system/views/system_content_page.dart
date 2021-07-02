@@ -16,20 +16,12 @@ class SystemContentPage extends StatefulWidget {
   _SystemContentPageState createState() => _SystemContentPageState();
 }
 
-class _SystemContentPageState extends State<SystemContentPage> with AutomaticKeepAliveClientMixin{
-  @override
-  void initState() {
-    super.initState();
-    Get.put<SystemContentController>(SystemContentController(),
-        tag: widget.typeId);
-    var controller = Get.find<SystemContentController>(tag: widget.typeId);
-    controller.setCid(widget.typeId);
-    controller.initData(true);
-  }
-
+class _SystemContentPageState extends State<SystemContentPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     return GetX<SystemContentController>(
+        //加上tag属性，不然每次调用Get.find<SystemContentController>找到的都是同一个对象，那么refreshcontroller和loadstate会有冲突
         init: Get.put<SystemContentController>(SystemContentController(),
             tag: widget.typeId),
         initState: (_) {
