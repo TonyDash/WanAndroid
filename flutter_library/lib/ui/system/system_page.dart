@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_library/controller/system_controller.dart';
 import 'package:flutter_library/model/tip_data.dart';
 import 'package:flutter_library/ui/state_page.dart';
+import 'package:flutter_library/ui/system/views/system_content_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -77,10 +78,9 @@ class _SystemMainPageState extends State<SystemMainPage>
           height: 60,
           child: _buildTipItemChildren(system.children),
         ),
-        Text("${system.name}")
+        SystemContentPage(system.id.toString())
       ],
     );
-
   }
 
   ///体系下方的子类型列表
@@ -109,6 +109,6 @@ class _SystemMainPageState extends State<SystemMainPage>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }
+

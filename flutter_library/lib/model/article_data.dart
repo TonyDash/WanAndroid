@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'article_item.dart';
 
 class ArticleData {
@@ -101,5 +104,126 @@ class ArticleResult {
     map["size"] = _size;
     map["total"] = _total;
     return map;
+  }
+}
+
+
+class HomeListItemUI extends StatefulWidget {
+  final ArticleItem articleItem;
+  final GestureTapCallback? onTap;
+  final bool isTop;
+
+
+  HomeListItemUI({required this.articleItem, this.onTap, this.isTop = false});
+
+  @override
+  _HomeListItemUIState createState() => _HomeListItemUIState();
+}
+
+
+class _HomeListItemUIState extends State<HomeListItemUI> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.only(top: 15, right: 10, bottom: 5),
+        child: InkWell(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                IconButton(
+                    padding: EdgeInsets.all(3.0),
+                    icon:widget.articleItem.collect ? Icon(Icons.favorite, color: Colors.red) : Icon(Icons.favorite_border),
+                    onPressed: () {
+                      // //点击收藏按钮
+                      // !widget.articleItem.collect? Get.find<ArticleCollectionController>().collectionArticle(
+                      //     widget.articleItem.id.toString(), () {
+                      //   widget.articleItem.setCollection(true);
+                      //   showToast("收藏成功");
+                      //   setState(() {
+                      //
+                      //   });
+                      // }, (value) {
+                      //   showToast(value);
+                      // }) : Get.find<ArticleCollectionController>().unCollectionArticle(
+                      //     widget.articleItem.id.toString(), () {
+                      //   //取消收藏
+                      //   widget.articleItem.setCollection(false);
+                      //   setState(() {
+                      //
+                      //   });
+                      // }, (value) {
+                      //   showToast(value);
+                      // });
+                    }),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Visibility(
+                            //显示“置顶”字样
+                              visible: widget.isTop,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 10),
+                                padding:
+                                EdgeInsets.symmetric(horizontal: 3),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                        color: Colors.red, width: 1)),
+                                child: Text(
+                                  "置顶",
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.red),
+                                ),
+                              )),
+
+                          ///第一行 作者
+                          Text(
+                            widget.articleItem.shareUser.isEmpty
+                                ? widget.articleItem.author
+                                : widget.articleItem.shareUser,
+                            style:
+                            TextStyle(fontSize: 14, color: Colors.grey),
+                          ),
+                          //第一行 右侧 时间
+                          Expanded(
+                            child: Text(
+                              widget.articleItem.niceDate,
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                  fontSize: 14, color: Colors.grey),
+                            ),
+                          )
+                        ],
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      //中间的标题
+                      Text(widget.articleItem.title,
+                          style: TextStyle(
+                              fontSize: 17,
+                              color: Theme.of(context).textTheme.headline1?.color,
+                              fontWeight: FontWeight.bold)),
+                      Padding(padding: EdgeInsets.only(top: 5)),
+                      //底部的文章类型
+                      Text(
+                        "${widget.articleItem.superChapterName}/${widget.articleItem.chapterName}",
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            onTap: widget.onTap??(){
+              // Get.toNamed(
+              //     RoutesConfig.WEB_PAGE,
+              //     arguments: {
+              //       ConstantInfo.ARTICLE_TITLE:widget.articleItem.title,
+              //       ConstantInfo.ARTICLE_URL:widget.articleItem.link,
+              //       ConstantInfo.ARTICLE_AUTHOR:widget.articleItem.shareUser.isEmpty?widget.articleItem.author:widget.articleItem.shareUser,
+              //     });
+            }));
   }
 }

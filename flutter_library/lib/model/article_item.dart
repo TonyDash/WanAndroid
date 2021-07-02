@@ -22,7 +22,7 @@ class ArticleItem {
   int _publishTime = 0;
   int _realSuperChapterId = 0;
   int _selfVisible = 0;
-  int _shareDate = 0;
+  int? _shareDate;
   String _shareUser = "";
   int _superChapterId = 0;
   String _superChapterName = "";
@@ -79,7 +79,7 @@ class ArticleItem {
 
   int get selfVisible => _selfVisible;
 
-  int get shareDate => _shareDate;
+  int? get shareDate => _shareDate;
 
   String get shareUser => _shareUser;
 

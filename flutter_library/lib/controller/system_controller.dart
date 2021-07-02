@@ -34,7 +34,7 @@ class SystemController extends BaseGetXController {
 class SystemContentController extends BaseGetXControllerWithRefresh {
   var _articleItems = <ArticleItem>[].obs;
 
-  get articleItems => _articleItems;
+  List<ArticleItem> get articleItems => _articleItems;
   int pageIndex = 0;
 
   //当前类型id
@@ -47,10 +47,10 @@ class SystemContentController extends BaseGetXControllerWithRefresh {
   @override
   void onInit() {
     super.onInit();
-    ever(Get.find<AppState>().loginState, (callback) {
-      //登录状态发生变化，重置主页数据
-      initData(true);
-    });
+    // ever(Get.find<AppState>().loginState, (callback) {
+    //   //登录状态发生变化，重置主页数据
+    //   initData(true);
+    // });
   }
 
   void getArticleBySystem(bool isShowLoading, {bool refresh = false}) async {
