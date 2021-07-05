@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import com.cjy.baselibrary.activity.BaseDataBindingActivity
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.databinding.ActivityMainBinding
+import com.tonyDash.wanandroid.ui.flutter.MyFlutterFragment
 import com.tonyDash.wanandroid.ui.main.discovery.DiscoveryFragment
 import com.tonyDash.wanandroid.ui.main.home.HomeFragment
 import com.tonyDash.wanandroid.ui.main.mine.MineFragment
@@ -21,7 +22,7 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
     override fun initViews() {
         fragments = mapOf(
             R.id.home to createFragment(HomeFragment::class.java),
-            R.id.system to createFragment(SystemFragment::class.java),
+            R.id.system to createFragment(MyFlutterFragment::class.java),
             R.id.discovery to createFragment(DiscoveryFragment::class.java),
             R.id.navigation to createFragment(NavigationFragment::class.java),
             R.id.mine to createFragment(MineFragment::class.java)
@@ -57,7 +58,7 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
         if (fragment == null) {
             fragment = when (clazz) {
                 HomeFragment::class.java -> HomeFragment.newInstance()
-                SystemFragment::class.java -> SystemFragment.newInstance()
+                MyFlutterFragment::class.java -> MyFlutterFragment(this,routePage = "/test").getFlutterFragment()
                 DiscoveryFragment::class.java -> DiscoveryFragment.newInstance()
                 NavigationFragment::class.java -> NavigationFragment.newInstance()
                 MineFragment::class.java -> MineFragment.newInstance()

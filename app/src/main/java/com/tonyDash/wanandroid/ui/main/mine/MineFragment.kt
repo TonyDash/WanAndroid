@@ -1,5 +1,6 @@
 package com.tonyDash.wanandroid.ui.main.mine
 
+import android.content.Intent
 import com.cjy.baselibrary.baseExt.yes
 import com.cjy.baselibrary.fragment.BaseDataBindVMFragment
 import com.cjy.baselibrary.fragment.BaseVMFragment
@@ -7,6 +8,7 @@ import com.cjy.baselibrary.viewModel.BaseViewModel
 import com.cjy.commonlibrary.store.UserInfoStore
 import com.tonyDash.wanandroid.R
 import com.tonyDash.wanandroid.databinding.FragmentMineBinding
+import com.tonyDash.wanandroid.ui.flutter.MyFlutterActivity
 import io.flutter.embedding.android.FlutterActivity
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -23,7 +25,11 @@ class MineFragment:BaseDataBindVMFragment<FragmentMineBinding>(){
 
     override fun initView() {
         llFlutter.setOnClickListener {
-            startActivity(FlutterActivity.createDefaultIntent(mActivity))
+            startActivity(
+                Intent().apply {
+                    this.setClass(mActivity,MyFlutterActivity::class.java)
+                }
+            )
         }
     }
 

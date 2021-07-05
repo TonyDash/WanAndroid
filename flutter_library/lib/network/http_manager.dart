@@ -18,7 +18,7 @@ class HttpManager {
   static HttpManager get instance => _getInstance();
 
 
-  //私有构造方法
+  //构造方法私有,此处也是命名构造方法（类名+.+方法名）
   HttpManager._() {
     BaseOptions options = BaseOptions(
         baseUrl: RequestApi.HOST,

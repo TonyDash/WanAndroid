@@ -30,28 +30,28 @@ class _SystemMainPageState extends State<SystemMainPage>
               length: controller.tipItems.length,
               child: Builder(builder: (context) {
                 _tabController =TabController(length: controller.tipItems.length, vsync: this);
-                  return Scaffold(
-                    appBar: AppBar(
-                      title: Text("体系"),
-                      bottom: _buildSystemTabs(controller.tipItems),
-                    ),
-                    body: Builder(builder: (context){
-                      if (_systemController.loadState.value == LoadState.LOADING) {
-                        return LoadingPage();
-                      }
-                      if (_systemController.loadState.value == LoadState.EMPTY) {
-                        return EmptyPage();
-                      } else if (_systemController.loadState.value == LoadState.FAILURE) {
-                        return Text("请求失败");
-                      }
-                      return TabBarView(
-                        controller: _tabController,
-                        children: controller.tipItems.map((e) {
-                          return _buildSystemContent(e);
-                        }).toList(),
-                      );
-                    }),
-                  );
+                return Scaffold(
+                  appBar: AppBar(
+                    title: Text("体系"),
+                    bottom: _buildSystemTabs(controller.tipItems),
+                  ),
+                  body: Builder(builder: (context){
+                    if (_systemController.loadState.value == LoadState.LOADING) {
+                      return LoadingPage();
+                    }
+                    if (_systemController.loadState.value == LoadState.EMPTY) {
+                      return EmptyPage();
+                    } else if (_systemController.loadState.value == LoadState.FAILURE) {
+                      return Text("请求失败");
+                    }
+                    return TabBarView(
+                      controller: _tabController,
+                      children: controller.tipItems.map((e) {
+                        return _buildSystemContent(e);
+                      }).toList(),
+                    );
+                  }),
+                );
                 }));
         });
   }
