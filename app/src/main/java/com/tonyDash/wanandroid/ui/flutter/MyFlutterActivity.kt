@@ -15,8 +15,8 @@ class MyFlutterActivity : AppCompatActivity() {
         setContentView(R.layout.fragment_system)
         supportFragmentManager.beginTransaction().replace(
             R.id.flContainer,
-            MyFlutterFragment(this, routePage = "/test").getFlutterFragment()
-        )
+            MyFlutterFragment(this, routePage = "/system").getFlutterFragment()
+        ).commit()
         tvBottom.setOnClickListener {
             Toast.makeText(this,"tvBottom",Toast.LENGTH_SHORT).show()
         }

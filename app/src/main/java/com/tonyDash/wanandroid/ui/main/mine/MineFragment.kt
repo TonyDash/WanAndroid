@@ -28,6 +28,7 @@ class MineFragment:BaseDataBindVMFragment<FragmentMineBinding>(){
             startActivity(
                 Intent().apply {
                     this.setClass(mActivity,MyFlutterActivity::class.java)
+                    this.extras
                 }
             )
         }

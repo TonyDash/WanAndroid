@@ -24,16 +24,16 @@ class SystemFragment : BaseDataBindVMFragment<FragmentHomeBinding>() {
         btnTop.setOnClickListener {
             Toast.makeText(mActivity,"btnTop",Toast.LENGTH_SHORT).show()
         }
-        childFragmentManager.beginTransaction().replace(
-            R.id.flContainer,
-            MyFlutterFragment(mActivity, routePage = "/test").getFlutterFragment()
-        ).commit()
-//        fragmentManager?.run {
-//            beginTransaction().replace(
-//                R.id.flContainer,
-//                MyFlutterFragment(mActivity, routePage = "/test").getFlutterFragment()
-//            ).commit()
-//        }
+//        childFragmentManager.beginTransaction().replace(
+//            R.id.flContainer,
+//            MyFlutterFragment(mActivity, routePage = "/test").getFlutterFragment()
+//        ).commit()
+        fragmentManager?.run {
+            beginTransaction().replace(
+                R.id.flContainer,
+                MyFlutterFragment(mActivity, routePage = "/test").getFlutterFragment()
+            ).commit()
+        }
     }
 
     override fun initData() {

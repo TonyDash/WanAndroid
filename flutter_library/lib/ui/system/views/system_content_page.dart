@@ -36,20 +36,20 @@ class _SystemContentPageState extends State<SystemContentPage>
               controller: Get.find<SystemContentController>(tag: widget.typeId)
                   .refreshController,
               onPressed: () {
-                controller.getArticleBySystem(true);
+                Get.find<SystemContentController>(tag: widget.typeId).getArticleBySystem(true);
               },
               onRefresh: () async {
-                controller.refresh();
+                Get.find<SystemContentController>(tag: widget.typeId).refresh();
               },
               onLoading: () async {
-                controller.getArticleBySystem(false);
+                Get.find<SystemContentController>(tag: widget.typeId).getArticleBySystem(false);
               },
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return HomeListItemUI(
-                      articleItem: controller.articleItems[index]);
+                      articleItem: Get.find<SystemContentController>(tag: widget.typeId).articleItems[index]);
                 },
-                itemCount: controller.articleItems.length,
+                itemCount: Get.find<SystemContentController>(tag: widget.typeId).articleItems.length,
               ));
         });
   }
