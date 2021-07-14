@@ -8,7 +8,7 @@ class ArticleData {
   int _errorCode = 0;
   String _errorMsg = "";
 
-  ArticleResult get data => _data ??= ArticleResult();
+  ArticleResult get data => _data ?? ArticleResult();
 
   int get errorCode => _errorCode;
 
@@ -48,7 +48,7 @@ class ArticleResult {
 
   int get curPage => _curPage;
 
-  List<ArticleItem> get datas => _datas ??= [];
+  List<ArticleItem> get datas => _datas ?? [];
 
   int get offset => _offset;
 

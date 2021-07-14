@@ -39,7 +39,7 @@ class HttpManager {
   //静态、同步、私有访问点。
   //静态获取单例的方法，供外部使用。
   static HttpManager _getInstance() {
-    return _instance ??= HttpManager._();
+    return _instance ?? HttpManager._();
   }
   //
   // //将数据写入cookie

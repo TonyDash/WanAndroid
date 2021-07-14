@@ -3,7 +3,7 @@ class TipData {
   int _errorCode = 0;
   String _errorMsg = "";
 
-  List<TipItem> get data => _data??=[];
+  List<TipItem> get data => _data??[];
 
   int get errorCode => _errorCode;
 
@@ -47,7 +47,7 @@ class TipItem {
   bool _userControlSetTop = false;
   int _visible = 0;
 
-  List<TipItemChildren> get children => _children ??= [];
+  List<TipItemChildren> get children => _children ?? [];
 
   int get courseId => _courseId;
 
