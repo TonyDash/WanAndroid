@@ -12,6 +12,7 @@
             <option value="$USER_HOME$/softwareInstall/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-8.0.7/android" />
             <option value="$USER_HOME$/softwareInstall/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-2.0.2/android" />
             <option value="$USER_HOME$/softwareInstall/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-2.0.6/android" />
+            <option value="$USER_HOME$/softwareInstall/flutter/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-2.0.10/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/LaunchStarter" />
             <option value="$PROJECT_DIR$/app" />

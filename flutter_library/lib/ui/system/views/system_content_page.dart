@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_library/common/constant_info.dart';
 import 'package:flutter_library/controller/system_controller.dart';
 import 'package:flutter_library/model/article_data.dart';
 import 'package:flutter_library/model/article_item.dart';
+import 'package:flutter_library/routes/Routes.dart';
 import 'package:flutter_library/ui/state_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/state_manager.dart';
@@ -36,20 +38,38 @@ class _SystemContentPageState extends State<SystemContentPage>
               controller: Get.find<SystemContentController>(tag: widget.typeId)
                   .refreshController,
               onPressed: () {
-                Get.find<SystemContentController>(tag: widget.typeId).getArticleBySystem(true);
+                Get.find<SystemContentController>(tag: widget.typeId)
+                    .getArticleBySystem(true);
               },
               onRefresh: () async {
                 Get.find<SystemContentController>(tag: widget.typeId).refresh();
               },
               onLoading: () async {
-                Get.find<SystemContentController>(tag: widget.typeId).getArticleBySystem(false);
+                Get.find<SystemContentController>(tag: widget.typeId)
+                    .getArticleBySystem(false);
               },
               child: ListView.builder(
                 itemBuilder: (context, index) {
                   return HomeListItemUI(
-                      articleItem: Get.find<SystemContentController>(tag: widget.typeId).articleItems[index]);
+                      articleItem:
+                          Get.find<SystemContentController>(tag: widget.typeId)
+                              .articleItems[index],
+                    onTap: (){
+                        Get.toNamed(RoutesConfig.WEB_PAGE,
+                            arguments: {
+                              ConstantInfo.ARTICLE_TITLE:Get.find<SystemContentController>(tag: widget.typeId)
+                                  .articleItems[index].title,
+                              ConstantInfo.ARTICLE_URL:Get.find<SystemContentController>(tag: widget.typeId)
+                                  .articleItems[index].link,
+                              ConstantInfo.ARTICLE_AUTHOR:Get.find<SystemContentController>(tag: widget.typeId)
+                                  .articleItems[index].author,
+                            });
+                    },
+                  );
                 },
-                itemCount: Get.find<SystemContentController>(tag: widget.typeId).articleItems.length,
+                itemCount: Get.find<SystemContentController>(tag: widget.typeId)
+                    .articleItems
+                    .length,
               ));
         });
   }
