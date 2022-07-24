@@ -26,6 +26,7 @@ class MyFlutterFragment : FlutterFragment {
         val flutterEngine = FlutterEngine(context)
         //指定想要跳转的flutter页面 这里要和下图对应上 记住他
         flutterEngine.navigationChannel.setInitialRoute(routePage)
+        //设置入口
         flutterEngine.dartExecutor.executeDartEntrypoint(DartExecutor.DartEntrypoint.createDefault())
         //这里做一个缓存 可以在适当的地方执行他 比如MyApp里 或者未跳转flutterr之前 在flutter页面执行前预加载
         val flutterEngineCache = FlutterEngineCache.getInstance()
@@ -41,8 +42,7 @@ class MyFlutterFragment : FlutterFragment {
         return super.getInitialRoute()
     }
 
-    fun getFlutterFragment():Fragment{
-//        return withCachedEngine(routePage).build()
-        return withNewEngine().initialRoute(routePage).build()
+    fun getFlutterFragment():FlutterFragment{
+        return withCachedEngine(routePage).build()
     }
 }
